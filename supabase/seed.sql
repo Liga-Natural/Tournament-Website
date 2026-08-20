@@ -31,7 +31,7 @@ insert into teams (id, event_id, division_id, name, slug, crest_url, color_prima
 ('t-2026-therians', 'ev-2026', 'div-2026-premier', 'Therians FC', 'therians-fc', '/crests/therians.jpg', null),
 ('t-2026-aguevoniados', 'ev-2026', 'div-2026-junior', 'Aguevoniados', 'aguevoniados', '/crests/aguevoniados.jpg', null),
 ('t-2026-gatitos', 'ev-2026', 'div-2026-junior', 'Gatitos Repelaos', 'gatitos-repelaos', '/crests/gatitos.png', null),
-('t-2026-goofies', 'ev-2026', 'div-2026-junior', 'Goofies FC', 'goofies-fc', null, null),
+('t-2026-goofies', 'ev-2026', 'div-2026-junior', 'Goofies FC', 'goofies-fc', '/crests/goofies.jpg', null),
 ('t-2025-negronis', 'ev-2025', 'div-2025-premier', 'Negronis FC', 'negronis-fc', '/crests/negronis.jpg', null),
 ('t-2025-palmeras', 'ev-2025', 'div-2025-premier', 'Palmeras FC', 'palmeras-fc', '/crests/palmeras.jpg', null),
 ('t-2025-pulpos', 'ev-2025', 'div-2025-junior', 'Pulpos FC', 'pulpos-fc', '/crests/pulpos.jpg', null),

@@ -114,7 +114,7 @@ export const teams: TeamRecord[] = [
   // 2026 Junior Division (3 clubs)
   team("t-2026-aguevoniados", "ev-2026", "div-2026-junior", "Aguevoniados", "aguevoniados", "/crests/aguevoniados.jpg"),
   team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos", "/crests/gatitos.png"),
-  team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc"),
+  team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc", "/crests/goofies.jpg"),
   // 2025 — confirmed finalists only (full 2025 rosters were not supplied)
   team("t-2025-negronis", "ev-2025", "div-2025-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
   team("t-2025-palmeras", "ev-2025", "div-2025-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg"),
