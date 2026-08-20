@@ -57,8 +57,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {highlight && (
         <Section className="py-10">
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-lg border border-gold/25 bg-navy-raised/60 p-6">
-              <p className="text-xs font-semibold uppercase tracking-widest text-gold">
+            <div className="rounded-lg border-t-4 border-gold bg-cream p-6 shadow-lg shadow-black/30">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#8a6a1f]">
                 {highlight.kind === "upcoming" ? dict.home.nextMatchKicker : dict.home.lastResultKicker}
               </p>
               <div className="mt-4 flex items-center justify-between gap-3">
@@ -69,20 +69,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     colorPrimary={highlight.item.home?.colorPrimary}
                     size={48}
                   />
-                  <span className="text-center text-sm font-medium text-cream">
+                  <span className="text-center text-sm font-medium text-navy-deep">
                     {highlight.item.home?.name ?? highlight.item.fixture.homeTeamNameFallback ?? "TBA"}
                   </span>
                 </div>
                 <div className="shrink-0 text-center">
                   {highlight.kind === "last-result" ? (
-                    <div className="font-display tabular text-3xl font-bold text-gold-light">
+                    <div className="font-display tabular text-3xl font-bold text-navy-deep">
                       {highlight.item.fixture.homeScore}–{highlight.item.fixture.awayScore}
                     </div>
                   ) : (
-                    <div className="font-display text-xl font-bold text-muted">{dict.common.vs}</div>
+                    <div className="font-display text-xl font-bold text-navy/60">{dict.common.vs}</div>
                   )}
                   {highlight.item.fixture.date && (
-                    <div className="mt-1 text-xs text-muted">
+                    <div className="mt-1 text-xs text-navy/60">
                       {new Date(highlight.item.fixture.date + "T12:00:00").toLocaleDateString(locale, {
                         month: "short",
                         day: "numeric",
@@ -98,22 +98,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     colorPrimary={highlight.item.away?.colorPrimary}
                     size={48}
                   />
-                  <span className="text-center text-sm font-medium text-cream">
+                  <span className="text-center text-sm font-medium text-navy-deep">
                     {highlight.item.away?.name ?? highlight.item.fixture.awayTeamNameFallback ?? "TBA"}
                   </span>
                 </div>
               </div>
               {highlight.item.fixture.penaltyNote && (
-                <p className="mt-3 text-center text-xs font-medium text-gold">{highlight.item.fixture.penaltyNote}</p>
+                <p className="mt-3 text-center text-xs font-medium text-[#8a6a1f]">{highlight.item.fixture.penaltyNote}</p>
               )}
-              <p className="mt-4 text-center text-xs text-muted">
+              <p className="mt-4 text-center text-xs text-navy/60">
                 {highlight.kind === "last-result" ? dict.home.nextMatchNone : ""}
               </p>
             </div>
 
             {premierMvp && (
-              <div className="rounded-lg border border-gold/25 bg-navy-raised/60 p-6">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gold">{dict.home.playerOfWeekKicker}</p>
+              <div className="rounded-lg border-t-4 border-gold bg-cream p-6 shadow-lg shadow-black/30">
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#8a6a1f]">{dict.home.playerOfWeekKicker}</p>
                 <div className="mt-4 flex items-center gap-4">
                   {premierMvp.mvpPhotoUrl ? (
                     <div className="crest-ring relative aspect-square w-20 shrink-0 overflow-hidden rounded-full">
@@ -123,12 +123,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <BrandPanel accent="navy" className="aspect-square w-20 shrink-0 rounded-full" />
                   )}
                   <div>
-                    <div className="font-display text-2xl font-bold text-cream">{premierMvp.mvpName}</div>
-                    <div className="text-sm text-muted">
+                    <div className="font-display text-2xl font-bold text-navy-deep">{premierMvp.mvpName}</div>
+                    <div className="text-sm text-navy/60">
                       {premierMvp.mvpTeam}
                       {premierMvp.mvpPosition ? ` · ${premierMvp.mvpPosition}` : ""}
                     </div>
-                    {premierMvp.mvpStatLine && <div className="mt-2 text-sm text-gold-light">{premierMvp.mvpStatLine}</div>}
+                    {premierMvp.mvpStatLine && <div className="mt-2 text-sm font-medium text-[#8a6a1f]">{premierMvp.mvpStatLine}</div>}
                   </div>
                 </div>
               </div>
