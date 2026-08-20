@@ -107,15 +107,17 @@ function team(
 }
 
 // Real crest colors — used as subtle per-club accents (crest ring, card edge) alongside the navy/gold brand.
+// Balanced to a consistent saturation/lightness band so no club reads
+// darker, brighter, or more washed-out than the rest.
 const CLUB_COLORS = {
-  negronis: "#1c3fa8", // royal blue
-  palmeras: "#0b6b3a", // forest green
-  pulpos: "#33355e", // deep indigo navy
-  aguevoniados: "#caa03a", // amber gold
-  chonflis: "#8b8d93", // gunmetal silver
-  goofies: "#4a6478", // slate blue-gray
-  therians: "#c81e2c", // crimson red
-  gatitos: "#b8963f", // brass gold
+  negronis: "#2d4fb4", // royal blue
+  palmeras: "#29a364", // emerald green
+  pulpos: "#3e4398", // indigo
+  aguevoniados: "#cfa230", // amber gold
+  chonflis: "#acb0b9", // chrome silver
+  goofies: "#6a88a0", // steel blue-gray
+  therians: "#be2d39", // crimson red
+  gatitos: "#b08f3b", // brass gold
 } as const;
 
 export const teams: TeamRecord[] = [

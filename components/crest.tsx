@@ -23,7 +23,7 @@ export function Crest({
       style={{
         width: size,
         height: size,
-        ...(colorPrimary ? { borderColor: colorPrimary, outlineColor: colorPrimary } : {}),
+        ...(colorPrimary ? { borderColor: colorPrimary } : {}),
       }}
       role="img"
       aria-label={`${name} crest`}

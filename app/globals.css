@@ -226,8 +226,8 @@ body {
   border-radius: 9999px;
   background: var(--cream);
   border: 3px solid var(--gold);
-  outline: 1px solid var(--gold);
-  outline-offset: 3px;
+  outline: 1.5px solid #ffffff;
+  outline-offset: 2px;
 }
 
 /* Checkered flag edge for Copa Piston */
