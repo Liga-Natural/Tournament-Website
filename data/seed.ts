@@ -39,7 +39,7 @@ export const events: EventRecord[] = [
       "The flagship Liga Natural season, contested across the Premier and Junior Divisions. Season 2026 is complete — Negronis FC lifted the Premier crown and Gatitos Repelaos took the Junior title.",
     descriptionEs:
       "La temporada insignia de Liga Natural, disputada en la Division Premier y la Division Junior. La Temporada 2026 ya concluyo — Negronis FC se coronó campeon de la Premier y Gatitos Repelaos se llevo el titulo Junior.",
-    heroImage: null,
+    heroImage: "/gallery/junior-goalkeeper-action.jpg",
     order: 1,
   },
   {

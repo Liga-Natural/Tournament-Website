@@ -5,7 +5,7 @@ insert into events (id, slug, kind, name, short_name, season_label, year, venue_
 ('ev-2026', 'liga-natural-2026', 'league', 'Liga Natural — Season 2026', 'Season 2026', '2026', 2026, 'Doral Legacy Park', 'Doral, Florida', 'completed', 'liga', null, '2026-08-09',
  'The flagship Liga Natural season, contested across the Premier and Junior Divisions. Season 2026 is complete — Negronis FC lifted the Premier crown and Gatitos Repelaos took the Junior title.',
  'La temporada insignia de Liga Natural, disputada en la Division Premier y la Division Junior. La Temporada 2026 ya concluyo — Negronis FC se coronó campeon de la Premier y Gatitos Repelaos se llevo el titulo Junior.',
- null, 1),
+ '/gallery/junior-goalkeeper-action.jpg', 1),
 ('ev-copa-piston', 'copa-piston', 'cup', 'Copa Piston', 'Copa Piston', 'TBA', 2026, null, null, 'upcoming', 'copa', null, null,
  'A fast, 7-a-side tournament with its own identity. Dates, format, and venue are still being finalized — follow along for the announcement.',
  'Un torneo veloz de 7 contra 7 con identidad propia. Fechas, formato y sede aun se estan definiendo — mantente atento al anuncio.',
@@ -14,7 +14,7 @@ insert into events (id, slug, kind, name, short_name, season_label, year, venue_
  'The season that started the Negronis–Palmeras rivalry. Palmeras FC edged the Premier Division final on penalties; Pulpos FC swept the Junior Division.',
  'La temporada que dio inicio a la rivalidad Negronis-Palmeras. Palmeras FC se llevo la final de la Division Premier en penales; Pulpos FC se coronó en la Division Junior.',
  null, 3)
-on conflict (id) do update set slug = excluded.slug, name = excluded.name, status = excluded.status;
+on conflict (id) do update set slug = excluded.slug, name = excluded.name, status = excluded.status, hero_image = excluded.hero_image;
 
 insert into divisions (id, event_id, name, "order") values
 ('div-2026-premier', 'ev-2026', 'Premier Division', 1),

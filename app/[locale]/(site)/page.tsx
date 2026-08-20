@@ -20,6 +20,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const base = `/${locale}`;
 
   const [events, highlight, galleryImages] = await Promise.all([getEvents(), getHomeHighlight(), getGalleryImages()]);
+  const heroImage = events.find((ev) => ev.heroImage)?.heroImage ?? null;
   const flagshipAwards = await getEditionAwards("ev-2026");
   const premierMvp = flagshipAwards.find((a) => a.divisionName === "Premier Division");
 
@@ -27,9 +28,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="relative aspect-[16/10] w-full sm:aspect-[16/8] lg:aspect-[21/9]">
-          <BrandPanel accent="gold" bare className="absolute inset-0" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/50 to-transparent" />
+        <div className="relative aspect-[4/5] w-full sm:aspect-[16/8] lg:aspect-[21/9]">
+          {heroImage ? (
+            <Image src={heroImage} alt="" fill sizes="100vw" priority className="object-cover" />
+          ) : (
+            <BrandPanel accent="gold" bare className="absolute inset-0" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/60 to-navy-deep/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/70 via-transparent to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-10 text-center sm:pb-14">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold-light">{dict.home.heroKicker}</p>
             <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-wide text-cream sm:text-6xl lg:text-7xl">
