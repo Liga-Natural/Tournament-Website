@@ -1,0 +1,193 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+import { isLocale, type Locale } from "@/lib/i18n/locales";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { getEvents, getEditionAwards } from "@/lib/store";
+import { getHomeHighlight } from "@/lib/queries";
+import { Section, StarDivider } from "@/components/page-parts";
+import { StatStrip } from "@/components/stat-strip";
+import { BrandPanel } from "@/components/brand-panel";
+import { Crest } from "@/components/crest";
+
+export const metadata: Metadata = { title: undefined };
+
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: rawLocale } = await params;
+  const locale = (isLocale(rawLocale) ? rawLocale : "en") as Locale;
+  const dict = getDictionary(locale);
+  const base = `/${locale}`;
+
+  const [events, highlight] = await Promise.all([getEvents(), getHomeHighlight()]);
+  const flagshipAwards = await getEditionAwards("ev-2026");
+  const premierMvp = flagshipAwards.find((a) => a.divisionName === "Premier Division");
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="relative aspect-[16/10] w-full sm:aspect-[16/8] lg:aspect-[21/9]">
+          <BrandPanel accent="gold" bare className="absolute inset-0" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/50 to-transparent" />
+          <div className="absolute inset-0 flex flex-col items-center justify-end px-6 pb-10 text-center sm:pb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-gold-light">{dict.home.heroKicker}</p>
+            <h1 className="mt-3 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-wide text-cream sm:text-6xl lg:text-7xl">
+              {dict.meta.tagline}
+            </h1>
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+              <Link href={`${base}/events`} className="gold-pill px-6 py-3 text-base">
+                {dict.home.heroCtaEvents}
+              </Link>
+              <Link
+                href={`${base}/standings`}
+                className="rounded-full border border-gold/50 px-6 py-3 text-base font-semibold text-gold-light hover:bg-gold/10"
+              >
+                {dict.home.heroCtaStandings}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Last result / next match highlight */}
+      {highlight && (
+        <Section className="py-10">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-lg border border-gold/25 bg-navy-raised/60 p-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gold">
+                {highlight.kind === "upcoming" ? dict.home.nextMatchKicker : dict.home.lastResultKicker}
+              </p>
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <div className="flex flex-1 flex-col items-center gap-2">
+                  <Crest name={highlight.item.home?.name ?? highlight.item.fixture.homeTeamNameFallback ?? "TBA"} crestUrl={highlight.item.home?.crestUrl} size={48} />
+                  <span className="text-center text-sm font-medium text-cream">
+                    {highlight.item.home?.name ?? highlight.item.fixture.homeTeamNameFallback ?? "TBA"}
+                  </span>
+                </div>
+                <div className="shrink-0 text-center">
+                  {highlight.kind === "last-result" ? (
+                    <div className="font-display tabular text-3xl font-bold text-gold-light">
+                      {highlight.item.fixture.homeScore}–{highlight.item.fixture.awayScore}
+                    </div>
+                  ) : (
+                    <div className="font-display text-xl font-bold text-muted">{dict.common.vs}</div>
+                  )}
+                  {highlight.item.fixture.date && (
+                    <div className="mt-1 text-xs text-muted">
+                      {new Date(highlight.item.fixture.date + "T12:00:00").toLocaleDateString(locale, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col items-center gap-2">
+                  <Crest name={highlight.item.away?.name ?? highlight.item.fixture.awayTeamNameFallback ?? "TBA"} crestUrl={highlight.item.away?.crestUrl} size={48} />
+                  <span className="text-center text-sm font-medium text-cream">
+                    {highlight.item.away?.name ?? highlight.item.fixture.awayTeamNameFallback ?? "TBA"}
+                  </span>
+                </div>
+              </div>
+              {highlight.item.fixture.penaltyNote && (
+                <p className="mt-3 text-center text-xs font-medium text-gold">{highlight.item.fixture.penaltyNote}</p>
+              )}
+              <p className="mt-4 text-center text-xs text-muted">
+                {highlight.kind === "last-result" ? dict.home.nextMatchNone : ""}
+              </p>
+            </div>
+
+            {premierMvp && (
+              <div className="rounded-lg border border-gold/25 bg-navy-raised/60 p-6">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gold">{dict.home.playerOfWeekKicker}</p>
+                <div className="mt-4 flex items-center gap-4">
+                  <BrandPanel accent="navy" className="aspect-square w-20 shrink-0 rounded-full" />
+                  <div>
+                    <div className="font-display text-2xl font-bold text-cream">{premierMvp.mvpName}</div>
+                    <div className="text-sm text-muted">
+                      {premierMvp.mvpTeam}
+                      {premierMvp.mvpPosition ? ` · ${premierMvp.mvpPosition}` : ""}
+                    </div>
+                    {premierMvp.mvpStatLine && <div className="mt-2 text-sm text-gold-light">{premierMvp.mvpStatLine}</div>}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </Section>
+      )}
+
+      {/* Stats strip */}
+      <Section className="py-10">
+        <StatStrip
+          stats={[
+            { value: "200,000+", label: dict.home.statInstagram },
+            { value: "8", label: dict.home.statClubs },
+            { value: "2", label: dict.home.statPlayers },
+            { value: "2", label: dict.home.statSeasons },
+          ]}
+        />
+      </Section>
+
+      {/* Events */}
+      <Section>
+        <div className="mb-8 text-center">
+          <h2 className="font-display text-3xl font-bold uppercase tracking-wide text-cream sm:text-4xl">
+            {dict.home.eventsHeading}
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-muted">{dict.home.eventsBody}</p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {events.map((ev) => (
+            <Link
+              key={ev.id}
+              href={`${base}/events/${ev.slug}`}
+              className={`group overflow-hidden rounded-lg border transition-colors ${
+                ev.theme === "copa"
+                  ? "cp-backdrop border-cp-gold/40 hover:border-cp-gold"
+                  : "border-gold/25 bg-navy-raised/50 hover:border-gold"
+              }`}
+            >
+              <div className="relative aspect-[4/3]">
+                <BrandPanel accent="gold" label={ev.shortName} className="absolute inset-0" />
+              </div>
+              <div className="p-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gold-light">
+                  {dict.events[
+                    ev.status === "upcoming" ? "statusUpcoming" : ev.status === "active" ? "statusActive" : "statusCompleted"
+                  ]}
+                </p>
+                <h3 className={`mt-1 font-display text-xl font-bold uppercase tracking-wide ${ev.theme === "copa" ? "font-cp cp-shear text-white" : "text-cream"}`}>
+                  {ev.name}
+                </h3>
+                {ev.venueName && <p className="mt-1 text-sm text-muted">{ev.venueName}</p>}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* History teaser */}
+      <Section className="text-center">
+        <StarDivider />
+        <h2 className="font-display text-3xl font-bold uppercase tracking-wide text-cream sm:text-4xl">
+          {dict.home.historyHeading}
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-muted">{dict.home.historyBody}</p>
+        <Link
+          href={`${base}/past-editions`}
+          className="mt-6 inline-block rounded-full border border-gold/50 px-6 py-3 text-sm font-semibold text-gold-light hover:bg-gold/10"
+        >
+          {dict.home.historyCta}
+        </Link>
+      </Section>
+
+      {/* Mission motif */}
+      <Section className="text-center">
+        <StarDivider />
+        <p className="mx-auto max-w-3xl font-display text-3xl font-bold uppercase leading-tight tracking-wide text-gold-light sm:text-5xl">
+          {dict.home.missionPullquote}
+        </p>
+      </Section>
+    </>
+  );
+}

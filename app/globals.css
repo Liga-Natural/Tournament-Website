@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+:root {
+  --navy-deep: #040814;
+  --navy: #0b142c;
+  --navy-raised: #142246;
+  --gold: #d4af5f;
+  --gold-light: #f2d696;
+  --cream: #f8f3e7;
+  --muted: #9ba8c2;
+
+  /* Copa Piston sub-theme */
+  --cp-red-core: #f8423a;
+  --cp-red-mid: #d81820;
+  --cp-red-deep: #3a060a;
+  --cp-chrome: #d7dbe2;
+  --cp-chrome-dark: #8b909c;
+  --cp-gold: #ffc33c;
+}
+
+@theme inline {
+  --color-navy-deep: var(--navy-deep);
+  --color-navy: var(--navy);
+  --color-navy-raised: var(--navy-raised);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+
+  --color-cp-red-core: var(--cp-red-core);
+  --color-cp-red-mid: var(--cp-red-mid);
+  --color-cp-red-deep: var(--cp-red-deep);
+  --color-cp-chrome: var(--cp-chrome);
+  --color-cp-chrome-dark: var(--cp-chrome-dark);
+  --color-cp-gold: var(--cp-gold);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-cp-display: var(--font-cp-display);
+}
+
+* {
+  border-color: var(--gold);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--navy-deep);
+  color: var(--cream);
+  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* Night-under-floodlights backdrop: navy gradient + diagonal gold pinstripes + vignette */
+.field-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(212, 175, 95, 0.09), transparent 60%),
+    linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 45%, var(--navy-deep) 100%);
+}
+
+.field-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(212, 175, 95, 0.05) 0px,
+    rgba(212, 175, 95, 0.05) 1px,
+    transparent 1px,
+    transparent 64px
+  );
+}
+
+.field-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* Copa Piston backdrop: vivid red gradient, never black */
+.cp-backdrop {
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(255, 195, 60, 0.14), transparent 55%),
+    linear-gradient(180deg, var(--cp-red-mid) 0%, var(--cp-red-deep) 55%, var(--cp-red-deep) 100%);
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+.font-cp {
+  font-family: var(--font-cp-display), sans-serif;
+}
+
+.cp-shear {
+  transform: skewX(-8deg);
+  display: inline-block;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Thin gold hairline */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border: none;
+}
+
+/* Gold frame inset from page edge */
+.gold-frame {
+  position: relative;
+}
+.gold-frame::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(212, 175, 95, 0.35);
+  pointer-events: none;
+}
+
+/* Star divider motif */
+.star-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  font-size: 0.75rem;
+}
+.star-divider::before,
+.star-divider::after {
+  content: "";
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.star-divider::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* Gold pill for sponsor credits / nav CTA */
+.gold-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy-deep);
+  font-weight: 700;
+  padding: 0.5rem 1.1rem;
+  box-shadow: 0 2px 12px rgba(212, 175, 95, 0.35);
+}
+
+/* Crest: cream circle, double gold ring */
+.crest-ring {
+  border-radius: 9999px;
+  background: var(--cream);
+  border: 3px solid var(--gold);
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Checkered flag edge for Copa Piston */
+.cp-checker {
+  height: 10px;
+  background-image: repeating-conic-gradient(#0a0a0a 0% 25%, #f4f4f4 0% 50%);
+  background-size: 16px 16px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold-light);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
