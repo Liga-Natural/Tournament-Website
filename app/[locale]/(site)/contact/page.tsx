@@ -13,7 +13,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <PageHeader kicker="Liga Natural Tournaments" title={dict.contactPage.heading} subtitle={dict.contactPage.subheading} />
       <Section className="pt-0">
         <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-[1fr_1.2fr]">
-          <div className="rounded-xl border border-gold/25 bg-navy-raised/50 p-6">
+          <div className="doc-card-letterhead p-6">
             <h2 className="font-display text-lg font-bold uppercase tracking-wide text-gold-light">
               {dict.contactPage.directHeading}
             </h2>
@@ -29,7 +29,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               @liga.natural
             </a>
           </div>
-          <ContactForm dict={dict} />
+          <div className="doc-card-letterhead p-6">
+            <ContactForm dict={dict} />
+          </div>
         </div>
       </Section>
     </>

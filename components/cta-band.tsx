@@ -12,13 +12,10 @@ export function CtaBand({ locale, dict }: { locale: Locale; dict: Dictionary }) 
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-base text-muted">{dict.ctaBand.body}</p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link href={`${base}/partners`} className="gold-pill px-6 py-3 text-base">
+          <Link href={`${base}/partners`} className="btn btn-gold px-7 py-3.5 text-sm">
             {dict.ctaBand.partnerBtn}
           </Link>
-          <Link
-            href={`${base}/join`}
-            className="rounded-full border border-gold/50 px-6 py-3 text-base font-semibold text-gold-light hover:bg-gold/10"
-          >
+          <Link href={`${base}/join`} className="btn btn-outline px-7 py-3.5 text-sm">
             {dict.ctaBand.joinBtn}
           </Link>
         </div>

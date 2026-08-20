@@ -12,7 +12,7 @@ export default function NotFound() {
         <p className="mt-3 max-w-md text-muted">
           This page doesn&apos;t exist — or the match, team, or event you&apos;re looking for hasn&apos;t been added yet.
         </p>
-        <Link href="/en" className="gold-pill mt-8 px-6 py-3 text-base">
+        <Link href="/en" className="btn btn-gold mt-8 text-sm">
           Back to Home
         </Link>
       </div>

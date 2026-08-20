@@ -12,7 +12,7 @@ export default async function JoinPage({ params }: { params: Promise<{ locale: s
     <>
       <PageHeader kicker="Liga Natural Tournaments" title={dict.joinPage.heading} subtitle={dict.joinPage.subheading} />
       <Section className="pt-0">
-        <div className="mx-auto max-w-2xl rounded-xl border border-gold/30 bg-navy-raised/60 p-6 sm:p-10">
+        <div className="doc-card-plaque mx-auto max-w-2xl p-6 sm:p-10">
           <p className="mb-6 text-sm text-muted">{dict.joinPage.intro}</p>
           <JoinForm dict={dict} />
         </div>

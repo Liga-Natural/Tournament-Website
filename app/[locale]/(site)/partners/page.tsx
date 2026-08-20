@@ -100,11 +100,16 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
       </Section>
 
       <Section className="pt-0">
-        <div className="mx-auto max-w-2xl rounded-xl border border-gold/30 bg-navy-raised/60 p-6 sm:p-10">
-          <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-cream">{dict.partnersPage.formHeading}</h2>
-          <p className="mt-2 text-sm text-muted">{dict.partnersPage.formBody}</p>
-          <div className="mt-6">
-            <PartnerEnquiryForm dict={dict} />
+        <div className="doc-card-certificate mx-auto max-w-2xl">
+          <div className="certificate-inner p-7 sm:p-11">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">Proposal</p>
+            <h2 className="mt-2 font-display text-2xl font-bold uppercase tracking-wide text-cream">
+              {dict.partnersPage.formHeading}
+            </h2>
+            <p className="mt-2 text-sm text-muted">{dict.partnersPage.formBody}</p>
+            <div className="mt-6">
+              <PartnerEnquiryForm dict={dict} />
+            </div>
           </div>
         </div>
       </Section>

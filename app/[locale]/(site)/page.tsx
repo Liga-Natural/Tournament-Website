@@ -34,13 +34,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {dict.meta.tagline}
             </h1>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <Link href={`${base}/events`} className="gold-pill px-6 py-3 text-base">
+              <Link href={`${base}/events`} className="btn btn-gold px-7 py-3.5 text-sm">
                 {dict.home.heroCtaEvents}
               </Link>
-              <Link
-                href={`${base}/standings`}
-                className="rounded-full border border-gold/50 px-6 py-3 text-base font-semibold text-gold-light hover:bg-gold/10"
-              >
+              <Link href={`${base}/standings`} className="btn btn-outline px-7 py-3.5 text-sm">
                 {dict.home.heroCtaStandings}
               </Link>
             </div>
@@ -173,10 +170,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           {dict.home.historyHeading}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-muted">{dict.home.historyBody}</p>
-        <Link
-          href={`${base}/past-editions`}
-          className="mt-6 inline-block rounded-full border border-gold/50 px-6 py-3 text-sm font-semibold text-gold-light hover:bg-gold/10"
-        >
+        <Link href={`${base}/past-editions`} className="btn btn-outline mt-6 px-7 py-3.5 text-sm">
           {dict.home.historyCta}
         </Link>
       </Section>

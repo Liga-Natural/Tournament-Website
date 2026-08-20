@@ -30,7 +30,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
             <p className="mt-3 max-w-xs text-muted">{dict.footer.sponsorLine}</p>
           </div>
           <div className="text-sm">
-            <Link href={`${base}/partners`} className="gold-pill">
+            <Link href={`${base}/partners`} className="btn btn-gold">
               {dict.nav.partner}
             </Link>
             <Link href={`${base}/signin`} className="mt-4 block text-muted hover:text-gold-light">

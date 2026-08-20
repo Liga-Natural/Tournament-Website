@@ -38,11 +38,7 @@ export function PartnerEnquiryForm({ dict }: { dict: Dictionary }) {
         />
       </div>
       {state.status === "error" && <p className="text-sm text-red-300">Please fill in your name and email.</p>}
-      <button
-        type="submit"
-        disabled={pending}
-        className="gold-pill w-full justify-center px-6 py-3.5 text-base disabled:opacity-60 sm:w-auto"
-      >
+      <button type="submit" disabled={pending} className="btn btn-gold w-full text-sm sm:w-auto">
         {pending ? dict.common.sending : dict.partnersPage.formSubmit}
       </button>
     </form>

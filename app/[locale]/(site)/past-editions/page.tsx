@@ -56,62 +56,81 @@ export default async function PastEditionsPage({ params }: { params: Promise<{ l
         <StarDivider />
       </Section>
 
-      {/* Season by season */}
-      <Section className="pt-0 space-y-16">
+      {/* Season by season — presented as a records archive, not a card grid */}
+      <Section className="pt-0">
+        <p className="mb-10 text-center text-xs font-semibold uppercase tracking-[0.3em] text-gold">
+          {dict.pastEditions.heading}
+        </p>
         {events.length === 0 ? (
           <EmptyState message={dict.pastEditions.empty} />
         ) : (
-          await Promise.all(
-            events.map(async (event) => {
-              const awards = await getEditionAwards(event.id);
-              return (
-                <div key={event.id}>
-                  <div className="mb-6 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                    <h2 className="font-display text-3xl font-extrabold uppercase tracking-wide text-cream">
-                      {dict.pastEditions.seasonLabel} {event.seasonLabel}
-                    </h2>
-                    {event.venueName && (
-                      <span className="text-sm text-muted">
-                        {dict.pastEditions.venueLabel}: {event.venueName}
+          <div className="mx-auto max-w-4xl">
+            {await Promise.all(
+              events.map(async (event, i) => {
+                const awards = await getEditionAwards(event.id);
+                const isLast = i === events.length - 1;
+                return (
+                  <div key={event.id} className="relative flex gap-6 sm:gap-10">
+                    {/* Timeline rail */}
+                    <div className="flex shrink-0 flex-col items-center">
+                      <span className="grid h-16 w-16 shrink-0 place-items-center rounded-full border-2 border-gold bg-navy-deep font-display text-lg font-bold text-gold-light sm:h-20 sm:w-20 sm:text-xl">
+                        {event.seasonLabel}
                       </span>
-                    )}
-                  </div>
-                  <div className="grid gap-6 md:grid-cols-2">
-                    {awards.map((award) => (
-                      <div key={award.id} className="overflow-hidden rounded-lg border border-gold/25 bg-navy-raised/50">
-                        <div className="relative aspect-[4/5]">
-                          <BrandPanel accent="gold" label={`${award.champion} · ${event.seasonLabel}`} className="absolute inset-0" />
-                        </div>
-                        <div className="p-5">
-                          <p className="text-xs font-semibold uppercase tracking-widest text-gold">{award.divisionName}</p>
-                          <p className="mt-1 text-xs text-muted">{award.finalNotes}</p>
-                          <div className="mt-3 flex items-baseline justify-between">
-                            <div>
-                              <p className="text-xs uppercase text-muted">{dict.common.champion}</p>
-                              <p className="font-display text-xl font-bold text-gold-light">{award.champion}</p>
-                            </div>
-                            <div className="font-display tabular text-2xl font-bold text-cream">{award.finalScoreLine}</div>
-                          </div>
-                          <p className="mt-1 text-sm text-muted">
-                            {dict.common.runnerUp}: {award.runnerUp}
-                          </p>
-                          <div className="mt-4 border-t border-gold/15 pt-4">
-                            <p className="text-xs uppercase text-muted">{dict.common.mvp}</p>
-                            <p className="font-display text-lg font-bold text-cream">{award.mvpName}</p>
-                            <p className="text-xs text-muted">
-                              {award.mvpTeam}
-                              {award.mvpPosition ? ` · ${award.mvpPosition}` : ""}
-                            </p>
-                            {award.mvpStatLine && <p className="mt-1 text-sm text-gold-light">{award.mvpStatLine}</p>}
-                          </div>
-                        </div>
+                      {!isLast && <span className="mt-1 w-px flex-1 bg-gradient-to-b from-gold/50 to-gold/10" />}
+                    </div>
+
+                    <div className={`min-w-0 flex-1 ${isLast ? "pb-0" : "pb-14"}`}>
+                      <div className="mb-4 flex flex-col gap-1 pt-3 sm:flex-row sm:items-baseline sm:justify-between">
+                        <h2 className="font-display text-2xl font-extrabold uppercase tracking-wide text-cream">
+                          {dict.pastEditions.seasonLabel} {event.seasonLabel}
+                        </h2>
+                        {event.venueName && (
+                          <span className="text-xs uppercase tracking-wide text-muted">
+                            {dict.pastEditions.venueLabel}: {event.venueName}
+                          </span>
+                        )}
                       </div>
-                    ))}
+
+                      <div className="divide-y divide-gold/15 border border-gold/20 bg-navy-raised/40">
+                        {awards.map((award) => (
+                          <div key={award.id} className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
+                            <div className="min-w-0 flex-1">
+                              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                                <p className="text-xs font-semibold uppercase tracking-widest text-gold">
+                                  {award.divisionName}
+                                </p>
+                                <span className="font-display tabular text-xl font-bold text-cream">
+                                  {award.finalScoreLine}
+                                </span>
+                              </div>
+                              <div className="mt-2 flex items-center gap-2">
+                                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold text-[10px] font-bold text-gold-light">
+                                  ★
+                                </span>
+                                <p className="font-display text-lg font-bold text-gold-light">{award.champion}</p>
+                              </div>
+                              <p className="mt-0.5 text-xs text-muted">
+                                {dict.common.runnerUp}: {award.runnerUp}
+                              </p>
+                              <div className="mt-3 border-t border-gold/10 pt-3">
+                                <p className="text-[10px] uppercase tracking-widest text-muted">{dict.common.mvp}</p>
+                                <p className="font-display text-base font-bold text-cream">{award.mvpName}</p>
+                                <p className="text-xs text-muted">
+                                  {award.mvpTeam}
+                                  {award.mvpPosition ? ` · ${award.mvpPosition}` : ""}
+                                  {award.mvpStatLine ? ` — ${award.mvpStatLine}` : ""}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              );
-            })
-          )
+                );
+              })
+            )}
+          </div>
         )}
       </Section>
     </>

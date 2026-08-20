@@ -1,12 +1,65 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n/locales";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { LocaleSwitcher } from "./locale-switcher";
 import type { Session } from "@/lib/types";
+
+interface NavLink {
+  href: string;
+  label: string;
+}
+
+function NavDropdown({ label, links, pathname }: { label: string; links: NavLink[]; pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const active = links.some((l) => pathname === l.href);
+
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className={`flex items-center gap-1 rounded px-2.5 py-1.5 text-sm font-medium transition-colors ${
+          active ? "text-gold-light" : "text-cream/85 hover:text-gold-light"
+        }`}
+      >
+        {label}
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true" className={open ? "rotate-180" : ""}>
+          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-2 min-w-44 border border-gold/25 bg-navy-raised py-1.5 shadow-lg">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className={`block px-4 py-2 text-sm ${
+                pathname === l.href ? "text-gold-light" : "text-cream/85 hover:bg-navy-deep hover:text-gold-light"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function SiteNav({
   locale,
@@ -21,18 +74,32 @@ export function SiteNav({
   const pathname = usePathname();
   const base = `/${locale}`;
 
-  const links: { href: string; label: string }[] = [
-    { href: `${base}`, label: dict.nav.home },
+  const competitionLinks: NavLink[] = [
     { href: `${base}/events`, label: dict.nav.events },
     { href: `${base}/standings`, label: dict.nav.standings },
     { href: `${base}/schedule`, label: dict.nav.schedule },
     { href: `${base}/teams`, label: dict.nav.teams },
+  ];
+  const infoLinks: NavLink[] = [
+    { href: `${base}/guidelines`, label: dict.nav.guidelines },
+    { href: `${base}/faq`, label: dict.nav.faq },
+  ];
+  const primaryLinks: NavLink[] = [
+    { href: `${base}`, label: dict.nav.home },
     { href: `${base}/past-editions`, label: dict.nav.pastEditions },
     { href: `${base}/gallery`, label: dict.nav.gallery },
     { href: `${base}/join`, label: dict.nav.join },
     { href: `${base}/about`, label: dict.nav.about },
-    { href: `${base}/guidelines`, label: dict.nav.guidelines },
-    { href: `${base}/faq`, label: dict.nav.faq },
+    { href: `${base}/contact`, label: dict.nav.contact },
+  ];
+  const allMobileLinks: NavLink[] = [
+    { href: `${base}`, label: dict.nav.home },
+    ...competitionLinks,
+    { href: `${base}/past-editions`, label: dict.nav.pastEditions },
+    { href: `${base}/gallery`, label: dict.nav.gallery },
+    { href: `${base}/join`, label: dict.nav.join },
+    { href: `${base}/about`, label: dict.nav.about },
+    ...infoLinks,
     { href: `${base}/contact`, label: dict.nav.contact },
   ];
 
@@ -55,20 +122,27 @@ export function SiteNav({
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center gap-1 xl:flex" aria-label="Primary">
-          {links.map((l) => {
-            const active = pathname === l.href;
-            return (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`whitespace-nowrap rounded px-2.5 py-1.5 text-sm font-medium transition-colors ${
-                  active ? "text-gold-light" : "text-cream/85 hover:text-gold-light"
-                }`}
-              >
-                {l.label}
-              </Link>
-            );
-          })}
+          <Link
+            href={primaryLinks[0].href}
+            className={`rounded px-2.5 py-1.5 text-sm font-medium transition-colors ${
+              pathname === primaryLinks[0].href ? "text-gold-light" : "text-cream/85 hover:text-gold-light"
+            }`}
+          >
+            {primaryLinks[0].label}
+          </Link>
+          <NavDropdown label={dict.nav.competitions} links={competitionLinks} pathname={pathname} />
+          {primaryLinks.slice(1).map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`whitespace-nowrap rounded px-2.5 py-1.5 text-sm font-medium transition-colors ${
+                pathname === l.href ? "text-gold-light" : "text-cream/85 hover:text-gold-light"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <NavDropdown label={dict.nav.info} links={infoLinks} pathname={pathname} />
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -76,7 +150,7 @@ export function SiteNav({
           <Link href={manageHref} className="text-xs font-semibold text-muted hover:text-gold-light">
             {dict.nav.manage}
           </Link>
-          <Link href={`${base}/partners`} className="gold-pill text-sm">
+          <Link href={`${base}/partners`} className="btn btn-gold">
             {dict.nav.partner}
           </Link>
         </div>
@@ -98,7 +172,7 @@ export function SiteNav({
       {open && (
         <div className="border-t border-gold/20 bg-navy-deep px-4 pb-6 pt-2 xl:hidden">
           <nav className="flex flex-col" aria-label="Primary mobile">
-            {links.map((l) => (
+            {allMobileLinks.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
@@ -118,7 +192,7 @@ export function SiteNav({
           <Link
             href={`${base}/partners`}
             onClick={() => setOpen(false)}
-            className="gold-pill mt-4 w-full justify-center text-sm"
+            className="btn btn-gold mt-4 w-full"
           >
             {dict.nav.partner}
           </Link>

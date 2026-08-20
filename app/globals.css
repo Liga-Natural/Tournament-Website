@@ -34,7 +34,7 @@
   --color-cp-chrome-dark: var(--cp-chrome-dark);
   --color-cp-gold: var(--cp-gold);
 
-  --font-display: var(--font-display);
+  --font-display: "Big Shoulders Display", "Big Shoulders", sans-serif;
   --font-body: var(--font-body);
   --font-cp-display: var(--font-cp-display);
 }
@@ -165,7 +165,8 @@ body {
   background: linear-gradient(90deg, var(--gold), transparent);
 }
 
-/* Gold pill for sponsor credits / nav CTA */
+/* Gold pill — reserved for sponsor-credit contexts (tier badges, "presented
+   by" chips) per the brand system. Buttons use .btn-gold / .btn-outline. */
 .gold-pill {
   display: inline-flex;
   align-items: center;
@@ -176,6 +177,48 @@ body {
   font-weight: 700;
   padding: 0.5rem 1.1rem;
   box-shadow: 0 2px 12px rgba(212, 175, 95, 0.35);
+}
+
+/* Primary button system: beveled corners (echoes a medal plaque / field
+   sign, not a soft SaaS pill), uppercase, letter-spaced — reads as an
+   official credential rather than a generic "click here." */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition:
+    filter 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+  white-space: nowrap;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy-deep);
+}
+.btn-gold:hover {
+  filter: brightness(1.08);
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 95, 0.55);
+  color: var(--gold-light);
+}
+.btn-outline:hover {
+  background: rgba(212, 175, 95, 0.1);
+  border-color: var(--gold);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Crest: cream circle, double gold ring */
@@ -192,6 +235,69 @@ body {
   height: 10px;
   background-image: repeating-conic-gradient(#0a0a0a 0% 25%, #f4f4f4 0% 50%);
   background-size: 16px 16px;
+}
+
+/* Document-card treatments — give the three public forms distinct
+   silhouettes instead of one repeated rounded box. */
+
+/* Contact: a letterhead — thin gold rule across the top, square corners. */
+.doc-card-letterhead {
+  position: relative;
+  border: 1px solid rgba(212, 175, 95, 0.25);
+  border-top: 3px solid var(--gold);
+  background: rgba(20, 34, 70, 0.5);
+}
+
+/* Join: a plaque — beveled corners, matching the button system, since
+   joining is an action, not a document. */
+.doc-card-plaque {
+  position: relative;
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  border: 1px solid rgba(212, 175, 95, 0.3);
+  background: rgba(20, 34, 70, 0.5);
+}
+
+/* Partner enquiry: a certificate — open corner brackets, most premium. */
+.doc-card-certificate {
+  position: relative;
+  border: 1px solid rgba(212, 175, 95, 0.2);
+  background: rgba(20, 34, 70, 0.5);
+  padding: 2px;
+}
+.doc-card-certificate::before,
+.doc-card-certificate::after,
+.doc-card-certificate > .certificate-inner::before,
+.doc-card-certificate > .certificate-inner::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--gold);
+  pointer-events: none;
+}
+.doc-card-certificate::before {
+  top: 6px;
+  left: 6px;
+  border-right: none;
+  border-bottom: none;
+}
+.doc-card-certificate::after {
+  top: 6px;
+  right: 6px;
+  border-left: none;
+  border-bottom: none;
+}
+.doc-card-certificate > .certificate-inner::before {
+  bottom: 6px;
+  left: 6px;
+  border-right: none;
+  border-top: none;
+}
+.doc-card-certificate > .certificate-inner::after {
+  bottom: 6px;
+  right: 6px;
+  border-left: none;
+  border-top: none;
 }
 
 :focus-visible {
