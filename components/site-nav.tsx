@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n/locales";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
 import { LocaleSwitcher } from "./locale-switcher";
+import { LeagueBadge } from "./league-badge";
 import type { Session } from "@/lib/types";
 
 interface NavLink {
@@ -113,9 +114,7 @@ export function SiteNav({
     <header className="sticky top-0 z-40 border-b border-gold/20 bg-navy-deep/90 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href={base} className="flex items-center gap-2 shrink-0" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-full crest-ring">
-            <span className="font-display text-sm font-extrabold text-navy-deep">LN</span>
-          </span>
+          <LeagueBadge size={38} />
           <span className="font-display text-lg font-bold uppercase tracking-wide text-cream leading-none">
             Liga Natural
           </span>

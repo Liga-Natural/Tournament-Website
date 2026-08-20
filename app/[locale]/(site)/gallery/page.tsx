@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getGalleryImages } from "@/lib/store";
@@ -24,11 +25,21 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
               key={img.id}
               className={`relative overflow-hidden rounded-lg border border-gold/20 ${spanFor[img.orientation]}`}
             >
-              <BrandPanel
-                accent={img.accentColor === "navy" ? "navy" : "gold"}
-                label={img.caption ?? undefined}
-                className="absolute inset-0"
-              />
+              {img.url ? (
+                <Image
+                  src={img.url}
+                  alt={locale === "es" ? img.altEs : img.altEn}
+                  fill
+                  sizes="(min-width: 640px) 25vw, 50vw"
+                  className="object-cover"
+                />
+              ) : (
+                <BrandPanel
+                  accent={img.accentColor === "navy" ? "navy" : "gold"}
+                  label={img.caption ?? undefined}
+                  className="absolute inset-0"
+                />
+              )}
             </div>
           ))}
         </div>

@@ -4,6 +4,7 @@ import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getSession } from "@/lib/session";
 import { signOutAction } from "@/app/actions/auth";
+import { LeagueBadge } from "@/components/league-badge";
 
 export default async function AdminLayout({
   children,
@@ -34,9 +35,7 @@ export default async function AdminLayout({
       <header className="border-b border-gold/20 bg-navy-deep/95">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-3">
           <div className="flex items-center gap-3">
-            <span className="grid h-8 w-8 place-items-center rounded-full crest-ring">
-              <span className="font-display text-xs font-extrabold text-navy-deep">LN</span>
-            </span>
+            <LeagueBadge size={32} />
             <span className="font-display text-lg font-bold uppercase tracking-wide text-gold-light">
               {dict.admin.dashboard}
             </span>

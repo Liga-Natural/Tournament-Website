@@ -3,6 +3,7 @@ import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getSession } from "@/lib/session";
 import { signOutAction } from "@/app/actions/auth";
+import { LeagueBadge } from "@/components/league-badge";
 
 export default async function RefereeLayout({
   children,
@@ -22,9 +23,7 @@ export default async function RefereeLayout({
       <div className="field-backdrop" aria-hidden="true" />
       <header className="flex items-center justify-between border-b border-gold/20 px-5 py-4">
         <div className="flex items-center gap-2.5">
-          <span className="grid h-9 w-9 place-items-center rounded-full crest-ring">
-            <span className="font-display text-sm font-extrabold text-navy-deep">LN</span>
-          </span>
+          <LeagueBadge size={36} />
           <span className="font-display text-lg font-bold uppercase tracking-wide text-gold-light">
             {dict.referee.heading}
           </span>

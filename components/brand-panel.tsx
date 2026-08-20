@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { LeagueBadge } from "./league-badge";
 
 const accents: Record<string, string> = {
   gold: "from-gold/25 via-navy-raised to-navy-deep",
@@ -37,9 +38,7 @@ export function BrandPanel({
       {children ??
         (!bare && (
           <div className="relative z-10 flex flex-col items-center gap-2 px-4 text-center">
-            <span className="grid h-14 w-14 place-items-center rounded-full crest-ring">
-              <span className="font-display text-lg font-extrabold text-navy-deep">LN</span>
-            </span>
+            <LeagueBadge size={56} />
             {label && <span className="text-xs font-semibold uppercase tracking-widest text-gold-light/90">{label}</span>}
           </div>
         ))}

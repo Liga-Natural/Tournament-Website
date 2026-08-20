@@ -24,19 +24,19 @@ insert into divisions (id, event_id, name, "order") values
 on conflict (id) do nothing;
 
 insert into teams (id, event_id, division_id, name, slug, crest_url, color_primary) values
-('t-2026-negronis', 'ev-2026', 'div-2026-premier', 'Negronis FC', 'negronis-fc', null, null),
-('t-2026-pulpos', 'ev-2026', 'div-2026-premier', 'Pulpos FC', 'pulpos-fc', null, null),
+('t-2026-negronis', 'ev-2026', 'div-2026-premier', 'Negronis FC', 'negronis-fc', '/crests/negronis.jpg', null),
+('t-2026-pulpos', 'ev-2026', 'div-2026-premier', 'Pulpos FC', 'pulpos-fc', '/crests/pulpos.jpg', null),
 ('t-2026-chonflis', 'ev-2026', 'div-2026-premier', 'Chonflis FC', 'chonflis-fc', null, null),
 ('t-2026-palmeras', 'ev-2026', 'div-2026-premier', 'Palmeras FC', 'palmeras-fc', null, null),
-('t-2026-therians', 'ev-2026', 'div-2026-premier', 'Therians FC', 'therians-fc', null, null),
+('t-2026-therians', 'ev-2026', 'div-2026-premier', 'Therians FC', 'therians-fc', '/crests/therians.jpg', null),
 ('t-2026-aguevoniados', 'ev-2026', 'div-2026-junior', 'Aguevoniados', 'aguevoniados', null, null),
-('t-2026-gatitos', 'ev-2026', 'div-2026-junior', 'Gatitos Repelaos', 'gatitos-repelaos', null, null),
+('t-2026-gatitos', 'ev-2026', 'div-2026-junior', 'Gatitos Repelaos', 'gatitos-repelaos', '/crests/gatitos.png', null),
 ('t-2026-goofies', 'ev-2026', 'div-2026-junior', 'Goofies FC', 'goofies-fc', null, null),
-('t-2025-negronis', 'ev-2025', 'div-2025-premier', 'Negronis FC', 'negronis-fc', null, null),
+('t-2025-negronis', 'ev-2025', 'div-2025-premier', 'Negronis FC', 'negronis-fc', '/crests/negronis.jpg', null),
 ('t-2025-palmeras', 'ev-2025', 'div-2025-premier', 'Palmeras FC', 'palmeras-fc', null, null),
-('t-2025-pulpos', 'ev-2025', 'div-2025-junior', 'Pulpos FC', 'pulpos-fc', null, null),
+('t-2025-pulpos', 'ev-2025', 'div-2025-junior', 'Pulpos FC', 'pulpos-fc', '/crests/pulpos.jpg', null),
 ('t-2025-aguevoniados', 'ev-2025', 'div-2025-junior', 'Aguevoniados', 'aguevoniados', null, null)
-on conflict (id) do nothing;
+on conflict (id) do update set crest_url = excluded.crest_url;
 
 insert into players (id, team_id, name, shirt_number, position) values
 ('p-contarino-2026', 't-2026-negronis', 'Daniele Contarino', null, 'Forward'),
@@ -75,5 +75,6 @@ insert into gallery_images (id, url, alt_en, alt_es, caption, orientation, accen
 ('g5', null, 'Referee crew before kickoff', 'Equipo arbitral antes del pitazo inicial', 'Referee crew', 'square', 'gold'),
 ('g6', null, 'Sideline crowd supporting their team', 'Aficion apoyando a su equipo desde la linea', 'Sideline support', 'portrait', 'navy'),
 ('g7', null, 'Kickoff at Doral Legacy Park', 'Saque inicial en Doral Legacy Park', 'Kickoff', 'landscape', 'gold'),
-('g8', null, 'Penalty shootout tension', 'Tension en la tanda de penales', 'Penalties', 'square', 'navy')
-on conflict (id) do nothing;
+('g8', null, 'Penalty shootout tension', 'Tension en la tanda de penales', 'Penalties', 'square', 'navy'),
+('g9', '/gallery/gatitos-finals-bound.png', 'Gatitos Repelaos matchday graphic announcing their Junior Division final berth', 'Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior', 'Gatitos Repelaos — Finals Bound', 'portrait', 'navy')
+on conflict (id) do update set url = excluded.url;

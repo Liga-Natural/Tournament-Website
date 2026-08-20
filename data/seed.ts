@@ -98,26 +98,27 @@ function team(
   eventId: string,
   divisionId: string,
   name: string,
-  slug: string
+  slug: string,
+  crestUrl: string | null = null
 ): TeamRecord {
-  return { id, eventId, divisionId, name, slug, crestUrl: null, colorPrimary: null };
+  return { id, eventId, divisionId, name, slug, crestUrl, colorPrimary: null };
 }
 
 export const teams: TeamRecord[] = [
   // 2026 Premier Division (5 clubs)
-  team("t-2026-negronis", "ev-2026", "div-2026-premier", "Negronis FC", "negronis-fc"),
-  team("t-2026-pulpos", "ev-2026", "div-2026-premier", "Pulpos FC", "pulpos-fc"),
+  team("t-2026-negronis", "ev-2026", "div-2026-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
+  team("t-2026-pulpos", "ev-2026", "div-2026-premier", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg"),
   team("t-2026-chonflis", "ev-2026", "div-2026-premier", "Chonflis FC", "chonflis-fc"),
   team("t-2026-palmeras", "ev-2026", "div-2026-premier", "Palmeras FC", "palmeras-fc"),
-  team("t-2026-therians", "ev-2026", "div-2026-premier", "Therians FC", "therians-fc"),
+  team("t-2026-therians", "ev-2026", "div-2026-premier", "Therians FC", "therians-fc", "/crests/therians.jpg"),
   // 2026 Junior Division (3 clubs)
   team("t-2026-aguevoniados", "ev-2026", "div-2026-junior", "Aguevoniados", "aguevoniados"),
-  team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos"),
+  team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos", "/crests/gatitos.png"),
   team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc"),
   // 2025 — confirmed finalists only (full 2025 rosters were not supplied)
-  team("t-2025-negronis", "ev-2025", "div-2025-premier", "Negronis FC", "negronis-fc"),
+  team("t-2025-negronis", "ev-2025", "div-2025-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
   team("t-2025-palmeras", "ev-2025", "div-2025-premier", "Palmeras FC", "palmeras-fc"),
-  team("t-2025-pulpos", "ev-2025", "div-2025-junior", "Pulpos FC", "pulpos-fc"),
+  team("t-2025-pulpos", "ev-2025", "div-2025-junior", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg"),
   team("t-2025-aguevoniados", "ev-2025", "div-2025-junior", "Aguevoniados", "aguevoniados"),
 ];
 
@@ -314,4 +315,13 @@ export const galleryImages: GalleryImageRecord[] = [
   { id: "g6", url: null, altEn: "Sideline crowd supporting their team", altEs: "Aficion apoyando a su equipo desde la linea", caption: "Sideline support", orientation: "portrait", accentColor: "navy" },
   { id: "g7", url: null, altEn: "Kickoff at Doral Legacy Park", altEs: "Saque inicial en Doral Legacy Park", caption: "Kickoff", orientation: "landscape", accentColor: "gold" },
   { id: "g8", url: null, altEn: "Penalty shootout tension", altEs: "Tension en la tanda de penales", caption: "Penalties", orientation: "square", accentColor: "navy" },
+  {
+    id: "g9",
+    url: "/gallery/gatitos-finals-bound.png",
+    altEn: "Gatitos Repelaos matchday graphic announcing their Junior Division final berth",
+    altEs: "Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior",
+    caption: "Gatitos Repelaos — Finals Bound",
+    orientation: "portrait",
+    accentColor: "navy",
+  },
 ];

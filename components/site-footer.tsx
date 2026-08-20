@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n/locales";
 import type { Dictionary } from "@/lib/i18n/dictionaries/en";
+import { LeagueBadge } from "./league-badge";
 
 export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const base = `/${locale}`;
@@ -10,8 +11,11 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         <div className="star-divider mb-8">★</div>
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <div className="font-display text-2xl font-bold uppercase tracking-wide text-gold-light">
-              Liga Natural
+            <div className="flex items-center gap-2.5">
+              <LeagueBadge size={32} />
+              <div className="font-display text-2xl font-bold uppercase tracking-wide text-gold-light">
+                Liga Natural
+              </div>
             </div>
             <p className="mt-2 max-w-xs text-sm text-muted">{dict.meta.tagline}</p>
           </div>
