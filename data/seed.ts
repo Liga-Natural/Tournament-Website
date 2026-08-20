@@ -100,18 +100,31 @@ function team(
   name: string,
   slug: string,
   crestUrl: string | null = null,
+  colorPrimary: string | null = null,
   squadPhotoUrl: string | null = null
 ): TeamRecord {
-  return { id, eventId, divisionId, name, slug, crestUrl, colorPrimary: null, squadPhotoUrl };
+  return { id, eventId, divisionId, name, slug, crestUrl, colorPrimary, squadPhotoUrl };
 }
+
+// Real crest colors — used as subtle per-club accents (crest ring, card edge) alongside the navy/gold brand.
+const CLUB_COLORS = {
+  negronis: "#1c3fa8", // royal blue
+  palmeras: "#0b6b3a", // forest green
+  pulpos: "#33355e", // deep indigo navy
+  aguevoniados: "#caa03a", // amber gold
+  chonflis: "#8b8d93", // gunmetal silver
+  goofies: "#4a6478", // slate blue-gray
+  therians: "#c81e2c", // crimson red
+  gatitos: "#b8963f", // brass gold
+} as const;
 
 export const teams: TeamRecord[] = [
   // 2026 Premier Division (5 clubs)
-  team("t-2026-negronis", "ev-2026", "div-2026-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
-  team("t-2026-pulpos", "ev-2026", "div-2026-premier", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg"),
-  team("t-2026-chonflis", "ev-2026", "div-2026-premier", "Chonflis FC", "chonflis-fc", "/crests/chonflis.jpg"),
-  team("t-2026-palmeras", "ev-2026", "div-2026-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg"),
-  team("t-2026-therians", "ev-2026", "div-2026-premier", "Therians FC", "therians-fc", "/crests/therians.jpg"),
+  team("t-2026-negronis", "ev-2026", "div-2026-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg", CLUB_COLORS.negronis),
+  team("t-2026-pulpos", "ev-2026", "div-2026-premier", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg", CLUB_COLORS.pulpos),
+  team("t-2026-chonflis", "ev-2026", "div-2026-premier", "Chonflis FC", "chonflis-fc", "/crests/chonflis.jpg", CLUB_COLORS.chonflis),
+  team("t-2026-palmeras", "ev-2026", "div-2026-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg", CLUB_COLORS.palmeras),
+  team("t-2026-therians", "ev-2026", "div-2026-premier", "Therians FC", "therians-fc", "/crests/therians.jpg", CLUB_COLORS.therians),
   // 2026 Junior Division (3 clubs)
   team(
     "t-2026-aguevoniados",
@@ -120,15 +133,24 @@ export const teams: TeamRecord[] = [
     "Aguevoniados",
     "aguevoniados",
     "/crests/aguevoniados.jpg",
+    CLUB_COLORS.aguevoniados,
     "/teams/aguevoniados-squad-2026.jpg"
   ),
-  team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos", "/crests/gatitos.png"),
-  team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc", "/crests/goofies.jpg"),
+  team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos", "/crests/gatitos.png", CLUB_COLORS.gatitos),
+  team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc", "/crests/goofies.jpg", CLUB_COLORS.goofies),
   // 2025 — confirmed finalists only (full 2025 rosters were not supplied)
-  team("t-2025-negronis", "ev-2025", "div-2025-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
-  team("t-2025-palmeras", "ev-2025", "div-2025-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg"),
-  team("t-2025-pulpos", "ev-2025", "div-2025-junior", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg"),
-  team("t-2025-aguevoniados", "ev-2025", "div-2025-junior", "Aguevoniados", "aguevoniados", "/crests/aguevoniados.jpg"),
+  team("t-2025-negronis", "ev-2025", "div-2025-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg", CLUB_COLORS.negronis),
+  team("t-2025-palmeras", "ev-2025", "div-2025-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg", CLUB_COLORS.palmeras),
+  team("t-2025-pulpos", "ev-2025", "div-2025-junior", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg", CLUB_COLORS.pulpos),
+  team(
+    "t-2025-aguevoniados",
+    "ev-2025",
+    "div-2025-junior",
+    "Aguevoniados",
+    "aguevoniados",
+    "/crests/aguevoniados.jpg",
+    CLUB_COLORS.aguevoniados
+  ),
 ];
 
 // Only real, confirmed players (season MVPs) are seeded. Full rosters are

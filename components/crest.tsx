@@ -9,16 +9,22 @@ function initials(name: string): string {
 export function Crest({
   name,
   crestUrl,
+  colorPrimary,
   size = 56,
 }: {
   name: string;
   crestUrl?: string | null;
+  colorPrimary?: string | null;
   size?: number;
 }) {
   return (
     <span
       className="crest-ring grid shrink-0 place-items-center overflow-hidden"
-      style={{ width: size, height: size }}
+      style={{
+        width: size,
+        height: size,
+        ...(colorPrimary ? { borderColor: colorPrimary, outlineColor: colorPrimary } : {}),
+      }}
       role="img"
       aria-label={`${name} crest`}
     >

@@ -45,9 +45,10 @@ export default async function TeamsPage({ params }: { params: Promise<{ locale: 
                         {g.teams.map((team) => (
                           <div
                             key={team.id}
-                            className="flex items-center gap-3 rounded-lg border border-gold/20 bg-navy-raised/50 p-3.5"
+                            className="flex items-center gap-3 rounded-lg border border-l-4 border-gold/20 bg-navy-raised/50 p-3.5"
+                            style={team.colorPrimary ? { borderLeftColor: team.colorPrimary } : undefined}
                           >
-                            <Crest name={team.name} crestUrl={team.crestUrl} size={40} />
+                            <Crest name={team.name} crestUrl={team.crestUrl} colorPrimary={team.colorPrimary} size={40} />
                             <span className="font-medium text-cream">{team.name}</span>
                           </div>
                         ))}

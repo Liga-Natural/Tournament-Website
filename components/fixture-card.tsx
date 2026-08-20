@@ -6,7 +6,7 @@ function Side({ team, fallback }: { team: TeamRecord | null | undefined; fallbac
   const name = team?.name ?? fallback ?? "TBA";
   return (
     <div className="flex flex-1 items-center gap-2.5 min-w-0">
-      <Crest name={name} crestUrl={team?.crestUrl} size={32} />
+      <Crest name={name} crestUrl={team?.crestUrl} colorPrimary={team?.colorPrimary} size={32} />
       <span className="truncate text-sm font-medium text-cream">{name}</span>
     </div>
   );

@@ -63,7 +63,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </p>
               <div className="mt-4 flex items-center justify-between gap-3">
                 <div className="flex flex-1 flex-col items-center gap-2">
-                  <Crest name={highlight.item.home?.name ?? highlight.item.fixture.homeTeamNameFallback ?? "TBA"} crestUrl={highlight.item.home?.crestUrl} size={48} />
+                  <Crest
+                    name={highlight.item.home?.name ?? highlight.item.fixture.homeTeamNameFallback ?? "TBA"}
+                    crestUrl={highlight.item.home?.crestUrl}
+                    colorPrimary={highlight.item.home?.colorPrimary}
+                    size={48}
+                  />
                   <span className="text-center text-sm font-medium text-cream">
                     {highlight.item.home?.name ?? highlight.item.fixture.homeTeamNameFallback ?? "TBA"}
                   </span>
@@ -87,7 +92,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   )}
                 </div>
                 <div className="flex flex-1 flex-col items-center gap-2">
-                  <Crest name={highlight.item.away?.name ?? highlight.item.fixture.awayTeamNameFallback ?? "TBA"} crestUrl={highlight.item.away?.crestUrl} size={48} />
+                  <Crest
+                    name={highlight.item.away?.name ?? highlight.item.fixture.awayTeamNameFallback ?? "TBA"}
+                    crestUrl={highlight.item.away?.crestUrl}
+                    colorPrimary={highlight.item.away?.colorPrimary}
+                    size={48}
+                  />
                   <span className="text-center text-sm font-medium text-cream">
                     {highlight.item.away?.name ?? highlight.item.fixture.awayTeamNameFallback ?? "TBA"}
                   </span>
