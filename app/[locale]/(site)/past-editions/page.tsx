@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getEvents, getEditionAwards } from "@/lib/store";
@@ -112,14 +113,27 @@ export default async function PastEditionsPage({ params }: { params: Promise<{ l
                               <p className="mt-0.5 text-xs text-muted">
                                 {dict.common.runnerUp}: {award.runnerUp}
                               </p>
-                              <div className="mt-3 border-t border-gold/10 pt-3">
-                                <p className="text-[10px] uppercase tracking-widest text-muted">{dict.common.mvp}</p>
-                                <p className="font-display text-base font-bold text-cream">{award.mvpName}</p>
-                                <p className="text-xs text-muted">
-                                  {award.mvpTeam}
-                                  {award.mvpPosition ? ` · ${award.mvpPosition}` : ""}
-                                  {award.mvpStatLine ? ` — ${award.mvpStatLine}` : ""}
-                                </p>
+                              <div className="mt-3 flex items-center gap-3 border-t border-gold/10 pt-3">
+                                {award.mvpPhotoUrl && (
+                                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold/40">
+                                    <Image
+                                      src={award.mvpPhotoUrl}
+                                      alt={award.mvpName}
+                                      fill
+                                      sizes="48px"
+                                      className="object-cover"
+                                    />
+                                  </div>
+                                )}
+                                <div>
+                                  <p className="text-[10px] uppercase tracking-widest text-muted">{dict.common.mvp}</p>
+                                  <p className="font-display text-base font-bold text-cream">{award.mvpName}</p>
+                                  <p className="text-xs text-muted">
+                                    {award.mvpTeam}
+                                    {award.mvpPosition ? ` · ${award.mvpPosition}` : ""}
+                                    {award.mvpStatLine ? ` — ${award.mvpStatLine}` : ""}
+                                  </p>
+                                </div>
                               </div>
                             </div>
                           </div>

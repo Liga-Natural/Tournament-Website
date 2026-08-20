@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
@@ -30,6 +31,21 @@ export default async function TeamDetailPage({
         </p>
         {!team.crestUrl && <p className="mt-3 text-xs text-muted">{dict.teamsPage.crestPending}</p>}
       </div>
+
+      {team.squadPhotoUrl && (
+        <Section className="pt-0">
+          <div className="relative mx-auto aspect-[16/10] w-full max-w-3xl overflow-hidden rounded-lg border border-gold/25 bg-navy-deep">
+            <Image
+              src={team.squadPhotoUrl}
+              alt={`${team.name} squad photo`}
+              fill
+              sizes="(min-width: 768px) 768px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </Section>
+      )}
 
       <Section className="pt-0">
         <h2 className="mb-4 font-display text-2xl font-bold uppercase tracking-wide text-gold-light">

@@ -92,6 +92,7 @@ export async function createTeamAction(formData: FormData) {
     slug: slugify(name),
     crestUrl: null,
     colorPrimary: null,
+    squadPhotoUrl: null,
   });
   revalidatePath("/[locale]/admin/events/[id]", "page");
 }

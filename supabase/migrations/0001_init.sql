@@ -35,7 +35,8 @@ create table if not exists teams (
   name text not null,
   slug text not null,
   crest_url text,
-  color_primary text
+  color_primary text,
+  squad_photo_url text
 );
 
 create table if not exists players (
@@ -93,8 +94,12 @@ create table if not exists edition_awards (
   mvp_name text not null,
   mvp_team text not null,
   mvp_position text,
-  mvp_stat_line text
+  mvp_stat_line text,
+  mvp_photo_url text
 );
+
+alter table teams add column if not exists squad_photo_url text;
+alter table edition_awards add column if not exists mvp_photo_url text;
 
 create table if not exists partners (
   id text primary key,

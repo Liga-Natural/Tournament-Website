@@ -36,6 +36,7 @@ export interface TeamRecord {
   slug: string;
   crestUrl: string | null;
   colorPrimary: string | null;
+  squadPhotoUrl: string | null;
 }
 
 export interface PlayerRecord {
@@ -95,6 +96,7 @@ export interface EditionAward {
   mvpTeam: string;
   mvpPosition: string | null;
   mvpStatLine: string | null;
+  mvpPhotoUrl: string | null;
 }
 
 export interface PartnerRecord {

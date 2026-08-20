@@ -99,9 +99,10 @@ function team(
   divisionId: string,
   name: string,
   slug: string,
-  crestUrl: string | null = null
+  crestUrl: string | null = null,
+  squadPhotoUrl: string | null = null
 ): TeamRecord {
-  return { id, eventId, divisionId, name, slug, crestUrl, colorPrimary: null };
+  return { id, eventId, divisionId, name, slug, crestUrl, colorPrimary: null, squadPhotoUrl };
 }
 
 export const teams: TeamRecord[] = [
@@ -112,7 +113,15 @@ export const teams: TeamRecord[] = [
   team("t-2026-palmeras", "ev-2026", "div-2026-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg"),
   team("t-2026-therians", "ev-2026", "div-2026-premier", "Therians FC", "therians-fc", "/crests/therians.jpg"),
   // 2026 Junior Division (3 clubs)
-  team("t-2026-aguevoniados", "ev-2026", "div-2026-junior", "Aguevoniados", "aguevoniados", "/crests/aguevoniados.jpg"),
+  team(
+    "t-2026-aguevoniados",
+    "ev-2026",
+    "div-2026-junior",
+    "Aguevoniados",
+    "aguevoniados",
+    "/crests/aguevoniados.jpg",
+    "/teams/aguevoniados-squad-2026.jpg"
+  ),
   team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos", "/crests/gatitos.png"),
   team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc", "/crests/goofies.jpg"),
   // 2025 — confirmed finalists only (full 2025 rosters were not supplied)
@@ -237,6 +246,7 @@ export const editionAwards: EditionAward[] = [
     mvpTeam: "Negronis FC",
     mvpPosition: "Forward",
     mvpStatLine: "7 goals · 4 assists · 3 Man of the Match awards",
+    mvpPhotoUrl: null,
   },
   {
     id: "award-2026-junior",
@@ -250,6 +260,7 @@ export const editionAwards: EditionAward[] = [
     mvpTeam: "Aguevoniados",
     mvpPosition: "Midfielder",
     mvpStatLine: "5 goals · 3 assists · 1 Man of the Match award",
+    mvpPhotoUrl: "/mvp/antwan-vasquez-portrait.jpg",
   },
   {
     id: "award-2025-premier",
@@ -263,6 +274,7 @@ export const editionAwards: EditionAward[] = [
     mvpTeam: "Negronis FC",
     mvpPosition: "Forward",
     mvpStatLine: "Tournament MVP — despite Negronis' final defeat",
+    mvpPhotoUrl: null,
   },
   {
     id: "award-2025-junior",
@@ -276,6 +288,7 @@ export const editionAwards: EditionAward[] = [
     mvpTeam: "Pulpos FC",
     mvpPosition: null,
     mvpStatLine: null,
+    mvpPhotoUrl: null,
   },
 ];
 
@@ -309,9 +322,9 @@ export const partners: PartnerRecord[] = [
 export const galleryImages: GalleryImageRecord[] = [
   { id: "g1", url: null, altEn: "Grand Final day, Doral Legacy Park", altEs: "Dia de la Gran Final, Doral Legacy Park", caption: "Grand Final · Aug 9, 2026", orientation: "landscape", accentColor: "gold" },
   { id: "g2", url: null, altEn: "Premier Division match action", altEs: "Accion de un partido de la Division Premier", caption: "Premier Division", orientation: "portrait", accentColor: "navy" },
-  { id: "g3", url: null, altEn: "Junior Division players on the ball", altEs: "Jugadores de la Division Junior con el balon", caption: "Junior Division", orientation: "square", accentColor: "gold" },
-  { id: "g4", url: null, altEn: "Trophy lift celebration", altEs: "Celebracion con el trofeo", caption: "Champions", orientation: "landscape", accentColor: "navy" },
-  { id: "g5", url: null, altEn: "Referee crew before kickoff", altEs: "Equipo arbitral antes del pitazo inicial", caption: "Referee crew", orientation: "square", accentColor: "gold" },
+  { id: "g3", url: "/gallery/junior-goalkeeper-action.jpg", altEn: "Junior Division goalkeeper in action", altEs: "Portero de la Division Junior en accion", caption: "Junior Division", orientation: "portrait", accentColor: "gold" },
+  { id: "g4", url: "/gallery/junior-trophy-lift.jpg", altEn: "Trophy lift celebration", altEs: "Celebracion con el trofeo", caption: "Champions", orientation: "portrait", accentColor: "navy" },
+  { id: "g5", url: "/gallery/junior-referee-handshake.jpg", altEn: "Referee crew before kickoff", altEs: "Equipo arbitral antes del pitazo inicial", caption: "Referee crew", orientation: "portrait", accentColor: "gold" },
   { id: "g6", url: null, altEn: "Sideline crowd supporting their team", altEs: "Aficion apoyando a su equipo desde la linea", caption: "Sideline support", orientation: "portrait", accentColor: "navy" },
   { id: "g7", url: null, altEn: "Kickoff at Doral Legacy Park", altEs: "Saque inicial en Doral Legacy Park", caption: "Kickoff", orientation: "landscape", accentColor: "gold" },
   { id: "g8", url: null, altEn: "Penalty shootout tension", altEs: "Tension en la tanda de penales", caption: "Penalties", orientation: "square", accentColor: "navy" },
