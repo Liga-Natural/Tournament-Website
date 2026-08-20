@@ -57,7 +57,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {highlight && (
         <Section className="py-10">
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-lg border-t-4 border-gold bg-cream p-6 shadow-lg shadow-black/30">
+            <div className="rounded-2xl bg-white p-6 shadow-xl shadow-black/40">
               <p className="text-xs font-semibold uppercase tracking-widest text-[#8a6a1f]">
                 {highlight.kind === "upcoming" ? dict.home.nextMatchKicker : dict.home.lastResultKicker}
               </p>
@@ -112,7 +112,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </div>
 
             {premierMvp && (
-              <div className="rounded-lg border-t-4 border-gold bg-cream p-6 shadow-lg shadow-black/30">
+              <div className="rounded-2xl bg-white p-6 shadow-xl shadow-black/40">
                 <p className="text-xs font-semibold uppercase tracking-widest text-[#8a6a1f]">{dict.home.playerOfWeekKicker}</p>
                 <div className="mt-4 flex items-center gap-4">
                   {premierMvp.mvpPhotoUrl ? (
@@ -166,7 +166,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <Link
               key={ev.id}
               href={`${base}/events/${ev.slug}`}
-              className={`group overflow-hidden rounded-lg border transition-colors ${
+              className={`group overflow-hidden rounded-2xl border transition-colors ${
                 ev.theme === "copa"
                   ? "cp-backdrop border-cp-gold/40 hover:border-cp-gold"
                   : "border-gold/25 bg-navy-raised/50 hover:border-gold"
@@ -191,6 +191,45 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           })}
         </div>
       </Section>
+
+      {/* Latest photos — horizontal scroll */}
+      {(() => {
+        const photos = galleryImages.filter((img) => img.url).slice(0, 8);
+        if (photos.length === 0) return null;
+        return (
+          <Section>
+            <div className="mb-6 flex items-end justify-between gap-3">
+              <h2 className="font-display text-3xl font-bold uppercase tracking-wide text-cream sm:text-4xl">
+                {dict.home.photosHeading}
+              </h2>
+              <Link href={`${base}/gallery`} className="shrink-0 text-sm font-medium text-gold-light hover:text-gold">
+                {dict.home.photosCta}
+              </Link>
+            </div>
+            <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0">
+              {photos.map((img) => (
+                <Link
+                  key={img.id}
+                  href={`${base}/gallery`}
+                  className="group relative aspect-[3/4] w-48 shrink-0 snap-start overflow-hidden rounded-2xl shadow-lg shadow-black/40 sm:w-56"
+                >
+                  <Image
+                    src={img.url as string}
+                    alt={locale === "es" ? img.altEs : img.altEn}
+                    fill
+                    sizes="224px"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                  {img.caption && (
+                    <p className="absolute inset-x-0 bottom-0 p-3 text-sm font-semibold text-white">{img.caption}</p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </Section>
+        );
+      })()}
 
       {/* History teaser */}
       <Section className="text-center">

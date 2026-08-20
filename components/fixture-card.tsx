@@ -25,7 +25,7 @@ export function FixtureCard({
 }) {
   const isDone = fixture.status === "completed";
   return (
-    <div className="rounded-lg border-t-4 border-gold bg-cream p-4 shadow-md shadow-black/20">
+    <div className="rounded-2xl bg-white p-4 shadow-lg shadow-black/30">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-navy/60">
         <span>
           {fixture.round ? `${fixture.round} · ` : ""}

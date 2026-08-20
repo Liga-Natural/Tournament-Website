@@ -97,6 +97,8 @@ const es: Dictionary = {
     historyBody: "Dos temporadas completadas. Dos divisiones. Ocho clubes. Cuatro finales — tres decididas en los minutos finales.",
     historyCta: "Explorar Ediciones Anteriores",
     missionPullquote: "Todos juegan. Todos crecen. Todos pertenecen.",
+    photosHeading: "Lo Ultimo De La Cancha",
+    photosCta: "Ver Galeria",
   },
   events: {
     heading: "Eventos",

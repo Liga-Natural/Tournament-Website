@@ -95,6 +95,8 @@ const en = {
     historyBody: "Two completed seasons. Two divisions. Eight clubs. Four finals — three decided in the closing minutes.",
     historyCta: "Explore Past Editions",
     missionPullquote: "Everyone plays. Everyone grows. Everyone belongs.",
+    photosHeading: "Latest From The Pitch",
+    photosCta: "View Gallery",
   },
   events: {
     heading: "Events",

@@ -28,7 +28,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
               <Link
                 key={ev.id}
                 href={`${base}/events/${ev.slug}`}
-                className={`group overflow-hidden rounded-lg border transition-colors ${
+                className={`group overflow-hidden rounded-2xl border transition-colors ${
                   ev.theme === "copa"
                     ? "cp-backdrop border-cp-gold/40 hover:border-cp-gold"
                     : "border-gold/25 bg-navy-raised/50 hover:border-gold"
