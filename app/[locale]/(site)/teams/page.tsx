@@ -43,14 +43,13 @@ export default async function TeamsPage({ params }: { params: Promise<{ locale: 
                       )}
                       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                         {g.teams.map((team) => (
-                          <Link
+                          <div
                             key={team.id}
-                            href={`${base}/teams/${event.slug}/${team.slug}`}
-                            className="flex items-center gap-3 rounded-lg border border-gold/20 bg-navy-raised/50 p-3.5 hover:border-gold"
+                            className="flex items-center gap-3 rounded-lg border border-gold/20 bg-navy-raised/50 p-3.5"
                           >
                             <Crest name={team.name} crestUrl={team.crestUrl} size={40} />
                             <span className="font-medium text-cream">{team.name}</span>
-                          </Link>
+                          </div>
                         ))}
                       </div>
                     </div>
