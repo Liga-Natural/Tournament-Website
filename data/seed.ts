@@ -108,18 +108,18 @@ export const teams: TeamRecord[] = [
   // 2026 Premier Division (5 clubs)
   team("t-2026-negronis", "ev-2026", "div-2026-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
   team("t-2026-pulpos", "ev-2026", "div-2026-premier", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg"),
-  team("t-2026-chonflis", "ev-2026", "div-2026-premier", "Chonflis FC", "chonflis-fc"),
-  team("t-2026-palmeras", "ev-2026", "div-2026-premier", "Palmeras FC", "palmeras-fc"),
+  team("t-2026-chonflis", "ev-2026", "div-2026-premier", "Chonflis FC", "chonflis-fc", "/crests/chonflis.jpg"),
+  team("t-2026-palmeras", "ev-2026", "div-2026-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg"),
   team("t-2026-therians", "ev-2026", "div-2026-premier", "Therians FC", "therians-fc", "/crests/therians.jpg"),
   // 2026 Junior Division (3 clubs)
-  team("t-2026-aguevoniados", "ev-2026", "div-2026-junior", "Aguevoniados", "aguevoniados"),
+  team("t-2026-aguevoniados", "ev-2026", "div-2026-junior", "Aguevoniados", "aguevoniados", "/crests/aguevoniados.jpg"),
   team("t-2026-gatitos", "ev-2026", "div-2026-junior", "Gatitos Repelaos", "gatitos-repelaos", "/crests/gatitos.png"),
   team("t-2026-goofies", "ev-2026", "div-2026-junior", "Goofies FC", "goofies-fc"),
   // 2025 — confirmed finalists only (full 2025 rosters were not supplied)
   team("t-2025-negronis", "ev-2025", "div-2025-premier", "Negronis FC", "negronis-fc", "/crests/negronis.jpg"),
-  team("t-2025-palmeras", "ev-2025", "div-2025-premier", "Palmeras FC", "palmeras-fc"),
+  team("t-2025-palmeras", "ev-2025", "div-2025-premier", "Palmeras FC", "palmeras-fc", "/crests/palmeras.jpg"),
   team("t-2025-pulpos", "ev-2025", "div-2025-junior", "Pulpos FC", "pulpos-fc", "/crests/pulpos.jpg"),
-  team("t-2025-aguevoniados", "ev-2025", "div-2025-junior", "Aguevoniados", "aguevoniados"),
+  team("t-2025-aguevoniados", "ev-2025", "div-2025-junior", "Aguevoniados", "aguevoniados", "/crests/aguevoniados.jpg"),
 ];
 
 // Only real, confirmed players (season MVPs) are seeded. Full rosters are
@@ -285,12 +285,12 @@ export const partners: PartnerRecord[] = [
     name: "Latina Trader VIP",
     tier: "title",
     status: "previous",
-    logoUrl: null,
+    logoUrl: "/partners/latina-trader-vip.jpg",
     instagram: "@latinatradervip",
     descriptionEn:
-      "Title and presenting partner. Featured on jerseys, matchday graphics, and the season's \"presented by\" credit line.",
+      "Title and presenting partner for the 2026 season. Featured on jerseys, matchday graphics, and the season's \"presented by\" credit line.",
     descriptionEs:
-      "Patrocinador titular y presentador. Presente en las camisetas, en las graficas de cada jornada y en el credito \"presentado por\" de la temporada.",
+      "Patrocinador titular y presentador de la temporada 2026. Presente en las camisetas, en las graficas de cada jornada y en el credito \"presentado por\" de la temporada.",
     order: 1,
   },
   {

@@ -26,16 +26,16 @@ on conflict (id) do nothing;
 insert into teams (id, event_id, division_id, name, slug, crest_url, color_primary) values
 ('t-2026-negronis', 'ev-2026', 'div-2026-premier', 'Negronis FC', 'negronis-fc', '/crests/negronis.jpg', null),
 ('t-2026-pulpos', 'ev-2026', 'div-2026-premier', 'Pulpos FC', 'pulpos-fc', '/crests/pulpos.jpg', null),
-('t-2026-chonflis', 'ev-2026', 'div-2026-premier', 'Chonflis FC', 'chonflis-fc', null, null),
-('t-2026-palmeras', 'ev-2026', 'div-2026-premier', 'Palmeras FC', 'palmeras-fc', null, null),
+('t-2026-chonflis', 'ev-2026', 'div-2026-premier', 'Chonflis FC', 'chonflis-fc', '/crests/chonflis.jpg', null),
+('t-2026-palmeras', 'ev-2026', 'div-2026-premier', 'Palmeras FC', 'palmeras-fc', '/crests/palmeras.jpg', null),
 ('t-2026-therians', 'ev-2026', 'div-2026-premier', 'Therians FC', 'therians-fc', '/crests/therians.jpg', null),
-('t-2026-aguevoniados', 'ev-2026', 'div-2026-junior', 'Aguevoniados', 'aguevoniados', null, null),
+('t-2026-aguevoniados', 'ev-2026', 'div-2026-junior', 'Aguevoniados', 'aguevoniados', '/crests/aguevoniados.jpg', null),
 ('t-2026-gatitos', 'ev-2026', 'div-2026-junior', 'Gatitos Repelaos', 'gatitos-repelaos', '/crests/gatitos.png', null),
 ('t-2026-goofies', 'ev-2026', 'div-2026-junior', 'Goofies FC', 'goofies-fc', null, null),
 ('t-2025-negronis', 'ev-2025', 'div-2025-premier', 'Negronis FC', 'negronis-fc', '/crests/negronis.jpg', null),
-('t-2025-palmeras', 'ev-2025', 'div-2025-premier', 'Palmeras FC', 'palmeras-fc', null, null),
+('t-2025-palmeras', 'ev-2025', 'div-2025-premier', 'Palmeras FC', 'palmeras-fc', '/crests/palmeras.jpg', null),
 ('t-2025-pulpos', 'ev-2025', 'div-2025-junior', 'Pulpos FC', 'pulpos-fc', '/crests/pulpos.jpg', null),
-('t-2025-aguevoniados', 'ev-2025', 'div-2025-junior', 'Aguevoniados', 'aguevoniados', null, null)
+('t-2025-aguevoniados', 'ev-2025', 'div-2025-junior', 'Aguevoniados', 'aguevoniados', '/crests/aguevoniados.jpg', null)
 on conflict (id) do update set crest_url = excluded.crest_url;
 
 insert into players (id, team_id, name, shirt_number, position) values
@@ -60,12 +60,12 @@ insert into edition_awards (id, event_id, division_name, champion, runner_up, fi
 on conflict (id) do nothing;
 
 insert into partners (id, name, tier, status, logo_url, instagram, description_en, description_es, "order") values
-('partner-latina-trader', 'Latina Trader VIP', 'title', 'previous', null, '@latinatradervip',
- 'Title and presenting partner. Featured on jerseys, matchday graphics, and the season''s "presented by" credit line.',
- 'Patrocinador titular y presentador. Presente en las camisetas, en las graficas de cada jornada y en el credito "presentado por" de la temporada.',
+('partner-latina-trader', 'Latina Trader VIP', 'title', 'previous', '/partners/latina-trader-vip.jpg', '@latinatradervip',
+ 'Title and presenting partner for the 2026 season. Featured on jerseys, matchday graphics, and the season''s "presented by" credit line.',
+ 'Patrocinador titular y presentador de la temporada 2026. Presente en las camisetas, en las graficas de cada jornada y en el credito "presentado por" de la temporada.',
  1),
 ('partner-synergy', 'Synergy Employment Services', 'season', 'previous', null, null, 'Season partner.', 'Patrocinador de temporada.', 2)
-on conflict (id) do nothing;
+on conflict (id) do update set logo_url = excluded.logo_url, description_en = excluded.description_en, description_es = excluded.description_es;
 
 insert into gallery_images (id, url, alt_en, alt_es, caption, orientation, accent_color) values
 ('g1', null, 'Grand Final day, Doral Legacy Park', 'Dia de la Gran Final, Doral Legacy Park', 'Grand Final · Aug 9, 2026', 'landscape', 'gold'),

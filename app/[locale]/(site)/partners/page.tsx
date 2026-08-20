@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getPartners } from "@/lib/store";
@@ -77,7 +78,12 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {current.map((p) => (
-              <PartnerCard key={p.id} name={p.name} description={locale === "es" ? p.descriptionEs : p.descriptionEn} />
+              <PartnerCard
+                key={p.id}
+                name={p.name}
+                description={locale === "es" ? p.descriptionEs : p.descriptionEn}
+                logoUrl={p.logoUrl}
+              />
             ))}
           </div>
         )}
@@ -94,6 +100,7 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
               description={locale === "es" ? p.descriptionEs : p.descriptionEn}
               instagram={p.instagram}
               badge={p.tier === "title" ? "Title Partner" : undefined}
+              logoUrl={p.logoUrl}
             />
           ))}
         </div>
@@ -122,16 +129,22 @@ function PartnerCard({
   description,
   instagram,
   badge,
+  logoUrl,
 }: {
   name: string;
   description: string;
   instagram?: string | null;
   badge?: string;
+  logoUrl?: string | null;
 }) {
   return (
     <div className="overflow-hidden rounded-lg border border-gold/20 bg-navy-raised/50">
-      <div className="relative aspect-[16/9]">
-        <BrandPanel accent="navy" label={name} className="absolute inset-0" />
+      <div className="relative aspect-[16/9] bg-navy-deep">
+        {logoUrl ? (
+          <Image src={logoUrl} alt={`${name} logo`} fill sizes="400px" className="object-contain p-8" />
+        ) : (
+          <BrandPanel accent="navy" label={name} className="absolute inset-0" />
+        )}
       </div>
       <div className="p-4">
         {badge && (
