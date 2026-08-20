@@ -67,14 +67,14 @@ insert into partners (id, name, tier, status, logo_url, instagram, description_e
 ('partner-synergy', 'Synergy Employment Services', 'season', 'previous', null, null, 'Season partner.', 'Patrocinador de temporada.', 2)
 on conflict (id) do update set logo_url = excluded.logo_url, description_en = excluded.description_en, description_es = excluded.description_es;
 
-insert into gallery_images (id, url, alt_en, alt_es, caption, orientation, accent_color) values
-('g1', null, 'Grand Final day, Doral Legacy Park', 'Dia de la Gran Final, Doral Legacy Park', 'Grand Final · Aug 9, 2026', 'landscape', 'gold'),
-('g2', null, 'Premier Division match action', 'Accion de un partido de la Division Premier', 'Premier Division', 'portrait', 'navy'),
-('g3', '/gallery/junior-goalkeeper-action.jpg', 'Junior Division goalkeeper in action', 'Portero de la Division Junior en accion', 'Junior Division', 'portrait', 'gold'),
-('g4', '/gallery/junior-trophy-lift.jpg', 'Trophy lift celebration', 'Celebracion con el trofeo', 'Champions', 'portrait', 'navy'),
-('g5', '/gallery/junior-referee-handshake.jpg', 'Referee crew before kickoff', 'Equipo arbitral antes del pitazo inicial', 'Referee crew', 'portrait', 'gold'),
-('g6', null, 'Sideline crowd supporting their team', 'Aficion apoyando a su equipo desde la linea', 'Sideline support', 'portrait', 'navy'),
-('g7', null, 'Kickoff at Doral Legacy Park', 'Saque inicial en Doral Legacy Park', 'Kickoff', 'landscape', 'gold'),
-('g8', null, 'Penalty shootout tension', 'Tension en la tanda de penales', 'Penalties', 'square', 'navy'),
-('g9', '/gallery/gatitos-finals-bound.png', 'Gatitos Repelaos matchday graphic announcing their Junior Division final berth', 'Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior', 'Gatitos Repelaos — Finals Bound', 'portrait', 'navy')
-on conflict (id) do update set url = excluded.url;
+insert into gallery_images (id, event_id, url, alt_en, alt_es, caption, orientation, accent_color) values
+('g1', 'ev-2026', null, 'Grand Final day, Doral Legacy Park', 'Dia de la Gran Final, Doral Legacy Park', 'Grand Final · Aug 9, 2026', 'landscape', 'gold'),
+('g2', 'ev-2026', null, 'Premier Division match action', 'Accion de un partido de la Division Premier', 'Premier Division', 'portrait', 'navy'),
+('g3', 'ev-2026', '/gallery/junior-goalkeeper-action.jpg', 'Junior Division goalkeeper in action', 'Portero de la Division Junior en accion', 'Junior Division', 'portrait', 'gold'),
+('g4', 'ev-2026', '/gallery/junior-trophy-lift.jpg', 'Trophy lift celebration', 'Celebracion con el trofeo', 'Champions', 'portrait', 'navy'),
+('g5', 'ev-2026', '/gallery/junior-referee-handshake.jpg', 'Referee crew before kickoff', 'Equipo arbitral antes del pitazo inicial', 'Referee crew', 'portrait', 'gold'),
+('g6', 'ev-2026', null, 'Sideline crowd supporting their team', 'Aficion apoyando a su equipo desde la linea', 'Sideline support', 'portrait', 'navy'),
+('g7', 'ev-2026', null, 'Kickoff at Doral Legacy Park', 'Saque inicial en Doral Legacy Park', 'Kickoff', 'landscape', 'gold'),
+('g8', 'ev-2026', null, 'Penalty shootout tension', 'Tension en la tanda de penales', 'Penalties', 'square', 'navy'),
+('g9', 'ev-2026', '/gallery/gatitos-finals-bound.png', 'Gatitos Repelaos matchday graphic announcing their Junior Division final berth', 'Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior', 'Gatitos Repelaos — Finals Bound', 'portrait', 'navy')
+on conflict (id) do update set url = excluded.url, event_id = excluded.event_id;

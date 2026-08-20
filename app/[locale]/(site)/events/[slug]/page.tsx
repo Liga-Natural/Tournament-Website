@@ -2,9 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { getEventFull, teamsById, standingsByDivision } from "@/lib/queries";
+import { getEventFull, teamsById } from "@/lib/queries";
 import { PageHeader, EmptyState } from "@/components/page-parts";
-import { StandingsTable } from "@/components/standings-table";
 import { FixtureCard } from "@/components/fixture-card";
 import { Crest } from "@/components/crest";
 import { CssTabs } from "@/components/css-tabs";
@@ -24,7 +23,6 @@ export default async function EventDetailPage({
   if (!data) notFound();
   const { event, divisions, teams, fixtures } = data;
   const byId = teamsById(teams);
-  const standings = standingsByDivision(teams, fixtures);
   const isCopa = event.theme === "copa";
 
   const divisionGroups: { division: DivisionRecord | null; teams: TeamRecord[]; fixtures: FixtureRecord[] }[] =
@@ -56,36 +54,12 @@ export default async function EventDetailPage({
           subtitle={event.venueName ? `${dict.common.venue}: ${event.venueName}` : undefined}
         />
       )}
-      <div className="mx-auto max-w-5xl px-6 pb-6 text-center text-sm text-cream/80">
-        {locale === "es" ? event.descriptionEs : event.descriptionEn}
-      </div>
       {isCopa && <div className="cp-checker" aria-hidden="true" />}
 
-      <div className="mx-auto max-w-5xl px-6 pb-20">
+      <div className="mx-auto max-w-5xl px-6 pt-8 pb-20">
         <CssTabs
           name={`event-${event.slug}`}
           tabs={[
-            {
-              id: "standings",
-              label: dict.eventDetail.tabStandings,
-              content: (
-                <div className="space-y-10">
-                  {fixtures.length > 0 && fixtures.some((f) => f.round?.toLowerCase().includes("final")) && (
-                    <p className="text-sm text-muted">{dict.eventDetail.standingsPartialNote}</p>
-                  )}
-                  {divisionGroups.map((g) => (
-                    <div key={g.division?.id ?? "all"}>
-                      {g.division && (
-                        <h3 className="mb-3 font-display text-xl font-bold uppercase tracking-wide text-gold-light">
-                          {g.division.name}
-                        </h3>
-                      )}
-                      <StandingsTable rows={standings.get(g.division?.id ?? null) ?? []} dict={dict} />
-                    </div>
-                  ))}
-                </div>
-              ),
-            },
             {
               id: "schedule",
               label: dict.eventDetail.tabSchedule,

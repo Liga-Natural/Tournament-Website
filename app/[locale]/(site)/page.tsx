@@ -1,13 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { getEvents, getEditionAwards } from "@/lib/store";
+import { getEvents, getEditionAwards, getGalleryImages } from "@/lib/store";
 import { getHomeHighlight } from "@/lib/queries";
 import { Section, StarDivider } from "@/components/page-parts";
 import { StatStrip } from "@/components/stat-strip";
 import { BrandPanel } from "@/components/brand-panel";
 import { Crest } from "@/components/crest";
+import { EventPhotoCarousel } from "@/components/event-photo-carousel";
 
 export const metadata: Metadata = { title: undefined };
 
@@ -17,7 +19,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const dict = getDictionary(locale);
   const base = `/${locale}`;
 
-  const [events, highlight] = await Promise.all([getEvents(), getHomeHighlight()]);
+  const [events, highlight, galleryImages] = await Promise.all([getEvents(), getHomeHighlight(), getGalleryImages()]);
   const flagshipAwards = await getEditionAwards("ev-2026");
   const premierMvp = flagshipAwards.find((a) => a.divisionName === "Premier Division");
 
@@ -37,8 +39,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <Link href={`${base}/events`} className="btn btn-gold px-7 py-3.5 text-sm">
                 {dict.home.heroCtaEvents}
               </Link>
-              <Link href={`${base}/standings`} className="btn btn-outline px-7 py-3.5 text-sm">
-                {dict.home.heroCtaStandings}
+              <Link href={`${base}/schedule`} className="btn btn-outline px-7 py-3.5 text-sm">
+                {dict.nav.schedule}
               </Link>
             </div>
           </div>
@@ -97,7 +99,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <div className="rounded-lg border border-gold/25 bg-navy-raised/60 p-6">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gold">{dict.home.playerOfWeekKicker}</p>
                 <div className="mt-4 flex items-center gap-4">
-                  <BrandPanel accent="navy" className="aspect-square w-20 shrink-0 rounded-full" />
+                  {premierMvp.mvpPhotoUrl ? (
+                    <div className="crest-ring relative aspect-square w-20 shrink-0 overflow-hidden rounded-full">
+                      <Image src={premierMvp.mvpPhotoUrl} alt={premierMvp.mvpName} fill sizes="80px" className="object-cover" />
+                    </div>
+                  ) : (
+                    <BrandPanel accent="navy" className="aspect-square w-20 shrink-0 rounded-full" />
+                  )}
                   <div>
                     <div className="font-display text-2xl font-bold text-cream">{premierMvp.mvpName}</div>
                     <div className="text-sm text-muted">
@@ -134,7 +142,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <p className="mx-auto mt-3 max-w-2xl text-muted">{dict.home.eventsBody}</p>
         </div>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((ev) => (
+          {events.map((ev) => {
+            const slides = galleryImages
+              .filter((img) => img.eventId === ev.id && img.url)
+              .map((img) => ({ url: img.url as string, alt: locale === "es" ? img.altEs : img.altEn }));
+            return (
             <Link
               key={ev.id}
               href={`${base}/events/${ev.slug}`}
@@ -145,7 +157,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               }`}
             >
               <div className="relative aspect-[4/3]">
-                <BrandPanel accent="gold" label={ev.shortName} className="absolute inset-0" />
+                <EventPhotoCarousel slides={slides} fallbackLabel={ev.shortName} className="absolute inset-0" />
               </div>
               <div className="p-4">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gold-light">
@@ -159,7 +171,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 {ev.venueName && <p className="mt-1 text-sm text-muted">{ev.venueName}</p>}
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </Section>
 

@@ -113,6 +113,7 @@ export interface PartnerRecord {
 
 export interface GalleryImageRecord {
   id: string;
+  eventId: string | null;
   url: string | null;
   altEn: string;
   altEs: string;

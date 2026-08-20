@@ -77,7 +77,6 @@ export function SiteNav({
 
   const competitionLinks: NavLink[] = [
     { href: `${base}/events`, label: dict.nav.events },
-    { href: `${base}/standings`, label: dict.nav.standings },
     { href: `${base}/schedule`, label: dict.nav.schedule },
     { href: `${base}/teams`, label: dict.nav.teams },
   ];

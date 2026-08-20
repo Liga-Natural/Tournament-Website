@@ -26,22 +26,24 @@ export function BrandPanel({
   children?: ReactNode;
 }) {
   return (
-    <div className={`relative flex items-center justify-center overflow-hidden bg-gradient-to-br ${accents[accent]} ${className}`}>
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(115deg, rgba(212,175,95,0.10) 0px, rgba(212,175,95,0.10) 1px, transparent 1px, transparent 28px)",
-        }}
-        aria-hidden="true"
-      />
-      {children ??
-        (!bare && (
-          <div className="relative z-10 flex flex-col items-center gap-2 px-4 text-center">
-            <LeagueBadge size={56} />
-            {label && <span className="text-xs font-semibold uppercase tracking-widest text-gold-light/90">{label}</span>}
-          </div>
-        ))}
+    <div className={`overflow-hidden ${className}`}>
+      <div className={`relative flex h-full w-full items-center justify-center bg-gradient-to-br ${accents[accent]}`}>
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(115deg, rgba(212,175,95,0.10) 0px, rgba(212,175,95,0.10) 1px, transparent 1px, transparent 28px)",
+          }}
+          aria-hidden="true"
+        />
+        {children ??
+          (!bare && (
+            <div className="relative z-10 flex flex-col items-center gap-2 px-4 text-center">
+              <LeagueBadge size={56} />
+              {label && <span className="text-xs font-semibold uppercase tracking-widest text-gold-light/90">{label}</span>}
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

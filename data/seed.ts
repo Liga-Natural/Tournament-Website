@@ -320,16 +320,17 @@ export const partners: PartnerRecord[] = [
 ];
 
 export const galleryImages: GalleryImageRecord[] = [
-  { id: "g1", url: null, altEn: "Grand Final day, Doral Legacy Park", altEs: "Dia de la Gran Final, Doral Legacy Park", caption: "Grand Final · Aug 9, 2026", orientation: "landscape", accentColor: "gold" },
-  { id: "g2", url: null, altEn: "Premier Division match action", altEs: "Accion de un partido de la Division Premier", caption: "Premier Division", orientation: "portrait", accentColor: "navy" },
-  { id: "g3", url: "/gallery/junior-goalkeeper-action.jpg", altEn: "Junior Division goalkeeper in action", altEs: "Portero de la Division Junior en accion", caption: "Junior Division", orientation: "portrait", accentColor: "gold" },
-  { id: "g4", url: "/gallery/junior-trophy-lift.jpg", altEn: "Trophy lift celebration", altEs: "Celebracion con el trofeo", caption: "Champions", orientation: "portrait", accentColor: "navy" },
-  { id: "g5", url: "/gallery/junior-referee-handshake.jpg", altEn: "Referee crew before kickoff", altEs: "Equipo arbitral antes del pitazo inicial", caption: "Referee crew", orientation: "portrait", accentColor: "gold" },
-  { id: "g6", url: null, altEn: "Sideline crowd supporting their team", altEs: "Aficion apoyando a su equipo desde la linea", caption: "Sideline support", orientation: "portrait", accentColor: "navy" },
-  { id: "g7", url: null, altEn: "Kickoff at Doral Legacy Park", altEs: "Saque inicial en Doral Legacy Park", caption: "Kickoff", orientation: "landscape", accentColor: "gold" },
-  { id: "g8", url: null, altEn: "Penalty shootout tension", altEs: "Tension en la tanda de penales", caption: "Penalties", orientation: "square", accentColor: "navy" },
+  { id: "g1", eventId: "ev-2026", url: null, altEn: "Grand Final day, Doral Legacy Park", altEs: "Dia de la Gran Final, Doral Legacy Park", caption: "Grand Final · Aug 9, 2026", orientation: "landscape", accentColor: "gold" },
+  { id: "g2", eventId: "ev-2026", url: null, altEn: "Premier Division match action", altEs: "Accion de un partido de la Division Premier", caption: "Premier Division", orientation: "portrait", accentColor: "navy" },
+  { id: "g3", eventId: "ev-2026", url: "/gallery/junior-goalkeeper-action.jpg", altEn: "Junior Division goalkeeper in action", altEs: "Portero de la Division Junior en accion", caption: "Junior Division", orientation: "portrait", accentColor: "gold" },
+  { id: "g4", eventId: "ev-2026", url: "/gallery/junior-trophy-lift.jpg", altEn: "Trophy lift celebration", altEs: "Celebracion con el trofeo", caption: "Champions", orientation: "portrait", accentColor: "navy" },
+  { id: "g5", eventId: "ev-2026", url: "/gallery/junior-referee-handshake.jpg", altEn: "Referee crew before kickoff", altEs: "Equipo arbitral antes del pitazo inicial", caption: "Referee crew", orientation: "portrait", accentColor: "gold" },
+  { id: "g6", eventId: "ev-2026", url: null, altEn: "Sideline crowd supporting their team", altEs: "Aficion apoyando a su equipo desde la linea", caption: "Sideline support", orientation: "portrait", accentColor: "navy" },
+  { id: "g7", eventId: "ev-2026", url: null, altEn: "Kickoff at Doral Legacy Park", altEs: "Saque inicial en Doral Legacy Park", caption: "Kickoff", orientation: "landscape", accentColor: "gold" },
+  { id: "g8", eventId: "ev-2026", url: null, altEn: "Penalty shootout tension", altEs: "Tension en la tanda de penales", caption: "Penalties", orientation: "square", accentColor: "navy" },
   {
     id: "g9",
+    eventId: "ev-2026",
     url: "/gallery/gatitos-finals-bound.png",
     altEn: "Gatitos Repelaos matchday graphic announcing their Junior Division final berth",
     altEs: "Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior",

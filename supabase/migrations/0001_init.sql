@@ -100,6 +100,7 @@ create table if not exists edition_awards (
 
 alter table teams add column if not exists squad_photo_url text;
 alter table edition_awards add column if not exists mvp_photo_url text;
+alter table gallery_images add column if not exists event_id text references events(id) on delete set null;
 
 create table if not exists partners (
   id text primary key,
@@ -115,6 +116,7 @@ create table if not exists partners (
 
 create table if not exists gallery_images (
   id text primary key,
+  event_id text references events(id) on delete set null,
   url text,
   alt_en text not null default '',
   alt_es text not null default '',

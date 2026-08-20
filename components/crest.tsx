@@ -23,7 +23,13 @@ export function Crest({
       aria-label={`${name} crest`}
     >
       {crestUrl ? (
-        <Image src={crestUrl} alt={`${name} crest`} width={size} height={size} className="h-full w-full object-cover" />
+        <Image
+          src={crestUrl}
+          alt={`${name} crest`}
+          width={size}
+          height={size}
+          className="h-[86%] w-[86%] object-contain"
+        />
       ) : (
         <span className="font-display font-extrabold text-navy-deep" style={{ fontSize: size * 0.34 }}>
           {initials(name)}
