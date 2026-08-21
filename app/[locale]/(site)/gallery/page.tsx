@@ -16,7 +16,12 @@ export default async function GalleryPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <PageHeader kicker="Liga Natural Tournaments" title={dict.galleryPage.heading} subtitle={dict.galleryPage.subheading} />
+      <PageHeader
+        kicker="Liga Natural Tournaments"
+        title={dict.galleryPage.heading}
+        subtitle={dict.galleryPage.subheading}
+        imageUrl="/gallery/junior-referee-handshake.jpg"
+      />
       <Section className="pt-0">
         <p className="mx-auto mb-8 max-w-2xl text-center text-sm text-muted">{dict.galleryPage.empty}</p>
         <div className="grid auto-rows-[160px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-4">

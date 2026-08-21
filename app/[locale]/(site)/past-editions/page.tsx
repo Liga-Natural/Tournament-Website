@@ -14,7 +14,12 @@ export default async function PastEditionsPage({ params }: { params: Promise<{ l
 
   return (
     <>
-      <PageHeader kicker="The Record Book" title={dict.pastEditions.heading} subtitle={dict.pastEditions.subheading} />
+      <PageHeader
+        kicker="The Record Book"
+        title={dict.pastEditions.heading}
+        subtitle={dict.pastEditions.subheading}
+        imageUrl="/gallery/junior-trophy-lift.jpg"
+      />
 
       {/* Rivalry storyline */}
       <Section className="pt-0">

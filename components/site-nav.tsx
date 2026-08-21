@@ -148,7 +148,7 @@ export function SiteNav({
             className="flex items-center gap-2 shrink-0"
             onClick={() => setOpen(false)}
           >
-            <LeagueBadge size={38} />
+            <LeagueBadge size={46} />
             <span className="font-display text-lg font-bold uppercase tracking-wide text-cream leading-none">
               Liga Natural
             </span>
@@ -259,7 +259,7 @@ export function SiteNav({
           </div>
 
           <div className="relative flex flex-col items-center pb-6 pt-2">
-            <LeagueBadge size={92} />
+            <LeagueBadge size={150} />
           </div>
 
           <nav

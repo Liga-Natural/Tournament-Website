@@ -15,7 +15,12 @@ export default async function TeamsPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <PageHeader kicker="Liga Natural Tournaments" title={dict.teamsPage.heading} subtitle={dict.teamsPage.subheading} />
+      <PageHeader
+        kicker="Liga Natural Tournaments"
+        title={dict.teamsPage.heading}
+        subtitle={dict.teamsPage.subheading}
+        imageUrl="/teams/aguevoniados-squad-2026.jpg"
+      />
       <Section className="pt-0 space-y-14">
         {await Promise.all(
           events.map(async (event) => {

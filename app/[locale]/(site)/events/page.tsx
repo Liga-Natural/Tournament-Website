@@ -14,7 +14,12 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
 
   return (
     <>
-      <PageHeader kicker="Liga Natural Tournaments" title={dict.events.heading} subtitle={dict.events.subheading} />
+      <PageHeader
+        kicker="Liga Natural Tournaments"
+        title={dict.events.heading}
+        subtitle={dict.events.subheading}
+        imageUrl="/gallery/junior-goalkeeper-action.jpg"
+      />
       <Section className="pt-0">
         {events.length === 0 ? (
           <EmptyState message={dict.events.empty} />

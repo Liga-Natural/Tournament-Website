@@ -1,6 +1,6 @@
 import { isLocale, type Locale } from "@/lib/i18n/locales";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
-import { Section, StarDivider } from "@/components/page-parts";
+import { PageHeader, Section, StarDivider } from "@/components/page-parts";
 import { StatStrip } from "@/components/stat-strip";
 import { BrandPanel } from "@/components/brand-panel";
 
@@ -27,12 +27,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <div className="mx-auto max-w-3xl px-6 pb-4 pt-16 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold">{dict.meta.tagline}</p>
-        <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-wide text-cream sm:text-5xl">
-          {dict.aboutPage.heading}
-        </h1>
-      </div>
+      <PageHeader kicker={dict.meta.tagline} title={dict.aboutPage.heading} imageUrl="/gallery/junior-goalkeeper-action.jpg" />
 
       <Section className="pt-4">
         <p className="mx-auto text-center text-xs font-semibold uppercase tracking-[0.3em] text-gold">
