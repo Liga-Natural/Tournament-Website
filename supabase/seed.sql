@@ -10,7 +10,7 @@ insert into events (id, slug, kind, name, short_name, season_label, year, venue_
  'A fast, 7-a-side tournament with its own identity. Dates, format, and venue are still being finalized — follow along for the announcement.',
  'Un torneo veloz de 7 contra 7 con identidad propia. Fechas, formato y sede aun se estan definiendo — mantente atento al anuncio.',
  null, 2),
-('ev-2025', 'liga-natural-2025', 'league', 'Liga Natural — Season 2025', 'Season 2025', '2025', 2025, 'Doral Legacy Park', 'Doral, Florida', 'completed', 'liga', null, '2025-01-01',
+('ev-2025', 'liga-natural-2025', 'league', 'Liga Natural — Season 2025', 'Season 2025', '2025', 2025, 'Doral Legacy Park', 'Doral, Florida', 'completed', 'liga', null, '2025-07-24',
  'The season that started the Negronis–Palmeras rivalry. Palmeras FC edged the Premier Division final on penalties; Pulpos FC swept the Junior Division.',
  'La temporada que dio inicio a la rivalidad Negronis-Palmeras. Palmeras FC se llevo la final de la Division Premier en penales; Pulpos FC se coronó en la Division Junior.',
  null, 3)
@@ -47,16 +47,16 @@ on conflict (id) do nothing;
 
 insert into fixtures (id, event_id, division_id, home_team_id, away_team_id, home_team_name_fallback, away_team_name_fallback, date, time, field, venue_override, status, home_score, away_score, home_score_ht, away_score_ht, penalty_note, referee_id, round, notes) values
 ('fx-2026-premier-final', 'ev-2026', 'div-2026-premier', 't-2026-negronis', 't-2026-palmeras', null, null, '2026-08-09', null, 'Doral Legacy Park', null, 'completed', 4, 2, 2, 1, null, null, 'Grand Final', null),
-('fx-2026-junior-final', 'ev-2026', 'div-2026-junior', 't-2026-gatitos', 't-2026-aguevoniados', null, null, '2026-08-09', null, 'Doral Legacy Park', null, 'completed', 2, 2, null, null, 'Gatitos Repelaos won 5–4 on penalties', null, 'Junior Division Final', null),
-('fx-2025-premier-final', 'ev-2025', 'div-2025-premier', 't-2025-negronis', 't-2025-palmeras', null, null, null, null, 'Doral Legacy Park', null, 'completed', 3, 3, null, null, 'Palmeras FC won 5–4 on penalties', null, 'Premier Division Final', null),
-('fx-2025-junior-final', 'ev-2025', 'div-2025-junior', 't-2025-pulpos', 't-2025-aguevoniados', null, null, null, null, 'Doral Legacy Park', null, 'completed', 3, 1, null, null, null, null, 'Junior Division Final', null)
+('fx-2026-junior-final', 'ev-2026', 'div-2026-junior', 't-2026-gatitos', 't-2026-aguevoniados', null, null, '2026-07-28', null, 'Doral Legacy Park', null, 'completed', 2, 2, null, null, 'Gatitos Repelaos won 5–4 on penalties', null, 'Junior Division Final', null),
+('fx-2025-premier-final', 'ev-2025', 'div-2025-premier', 't-2025-negronis', 't-2025-palmeras', null, null, '2025-07-24', null, 'Doral Legacy Park', null, 'completed', 3, 3, null, null, 'Palmeras FC won 5–4 on penalties', null, 'Premier Division Final', null),
+('fx-2025-junior-final', 'ev-2025', 'div-2025-junior', 't-2025-pulpos', 't-2025-aguevoniados', null, null, '2025-07-23', null, 'Doral Legacy Park', null, 'completed', 3, 1, null, null, null, null, 'Junior Division Final', null)
 on conflict (id) do nothing;
 
 insert into edition_awards (id, event_id, division_name, champion, runner_up, final_score_line, final_notes, mvp_name, mvp_team, mvp_position, mvp_stat_line, mvp_photo_url, mvp_action_photo_url) values
 ('award-2026-premier', 'ev-2026', 'Premier Division', 'Negronis FC', 'Palmeras FC', '4–2 (2–1 HT)', 'Grand Final — August 9, 2026', 'Daniele Contarino', 'Negronis FC', 'Forward', '7 goals · 4 assists · 3 Man of the Match awards', '/mvp/daniele-contarino-portrait.jpg', '/gallery/negronis-daniele-strike.jpg'),
-('award-2026-junior', 'ev-2026', 'Junior Division', 'Gatitos Repelaos', 'Aguevoniados', '2–2 (won 5–4 on penalties)', 'Junior Division Final — August 9, 2026', 'Antwan Vasquez', 'Aguevoniados', 'Midfielder', '5 goals · 3 assists · 1 Man of the Match award', '/mvp/antwan-vasquez-portrait.jpg', '/gallery/antwan-vasquez-celebration.jpg'),
-('award-2025-premier', 'ev-2025', 'Premier Division', 'Palmeras FC', 'Negronis FC', '3–3 (Palmeras won 5–4 on penalties)', 'Premier Division Final', 'Daniele Contarino', 'Negronis FC', 'Forward', 'Tournament MVP — despite Negronis'' final defeat', '/mvp/daniele-contarino-portrait.jpg', '/gallery/daniele-contarino-2025-champion.jpg'),
-('award-2025-junior', 'ev-2025', 'Junior Division', 'Pulpos FC', 'Aguevoniados', '3–1', 'Junior Division Final', 'Edgar Mata', 'Pulpos FC', null, null, null, null)
+('award-2026-junior', 'ev-2026', 'Junior Division', 'Gatitos Repelaos', 'Aguevoniados', '2–2 (won 5–4 on penalties)', 'Junior Division Final — July 28, 2026', 'Antwan Vasquez', 'Aguevoniados', 'Midfielder', '5 goals · 3 assists · 1 Man of the Match award', '/mvp/antwan-vasquez-portrait.jpg', '/gallery/antwan-vasquez-celebration.jpg'),
+('award-2025-premier', 'ev-2025', 'Premier Division', 'Palmeras FC', 'Negronis FC', '3–3 (Palmeras won 5–4 on penalties)', 'Premier Division Final — July 24, 2025', 'Daniele Contarino', 'Negronis FC', 'Forward', 'Tournament MVP — despite Negronis'' final defeat', '/mvp/daniele-contarino-portrait.jpg', '/gallery/daniele-contarino-2025-champion.jpg'),
+('award-2025-junior', 'ev-2025', 'Junior Division', 'Pulpos FC', 'Aguevoniados', '3–1', 'Junior Division Final — July 23, 2025', 'Edgar Mata', 'Pulpos FC', null, null, null, null)
 on conflict (id) do update set mvp_photo_url = excluded.mvp_photo_url, mvp_action_photo_url = excluded.mvp_action_photo_url;
 
 insert into partners (id, name, tier, status, logo_url, instagram, description_en, description_es, "order") values
