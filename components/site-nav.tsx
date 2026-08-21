@@ -117,7 +117,6 @@ export function SiteNav({
   const primaryLinks: NavLink[] = [
     { href: `${base}`, label: dict.nav.home },
     { href: `${base}/past-editions`, label: dict.nav.pastEditions },
-    { href: `${base}/gallery`, label: dict.nav.gallery },
     { href: `${base}/join`, label: dict.nav.join },
     { href: `${base}/about`, label: dict.nav.about },
     { href: `${base}/contact`, label: dict.nav.contact },
@@ -126,7 +125,6 @@ export function SiteNav({
     { href: `${base}`, label: dict.nav.home },
     ...competitionLinks,
     { href: `${base}/past-editions`, label: dict.nav.pastEditions },
-    { href: `${base}/gallery`, label: dict.nav.gallery },
     { href: `${base}/join`, label: dict.nav.join },
     { href: `${base}/about`, label: dict.nav.about },
     ...infoLinks,

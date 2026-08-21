@@ -52,12 +52,12 @@ insert into fixtures (id, event_id, division_id, home_team_id, away_team_id, hom
 ('fx-2025-junior-final', 'ev-2025', 'div-2025-junior', 't-2025-pulpos', 't-2025-aguevoniados', null, null, null, null, 'Doral Legacy Park', null, 'completed', 3, 1, null, null, null, null, 'Junior Division Final', null)
 on conflict (id) do nothing;
 
-insert into edition_awards (id, event_id, division_name, champion, runner_up, final_score_line, final_notes, mvp_name, mvp_team, mvp_position, mvp_stat_line, mvp_photo_url) values
-('award-2026-premier', 'ev-2026', 'Premier Division', 'Negronis FC', 'Palmeras FC', '4–2 (2–1 HT)', 'Grand Final — August 9, 2026', 'Daniele Contarino', 'Negronis FC', 'Forward', '7 goals · 4 assists · 3 Man of the Match awards', null),
-('award-2026-junior', 'ev-2026', 'Junior Division', 'Gatitos Repelaos', 'Opponent to be confirmed', '2–2 (won 5–4 on penalties)', 'Junior Division Final — August 9, 2026', 'Antwan Vasquez', 'Aguevoniados', 'Midfielder', '5 goals · 3 assists · 1 Man of the Match award', '/mvp/antwan-vasquez-portrait.jpg'),
-('award-2025-premier', 'ev-2025', 'Premier Division', 'Palmeras FC', 'Negronis FC', '3–3 (Palmeras won 5–4 on penalties)', 'Premier Division Final', 'Daniele Contarino', 'Negronis FC', 'Forward', 'Tournament MVP — despite Negronis'' final defeat', null),
-('award-2025-junior', 'ev-2025', 'Junior Division', 'Pulpos FC', 'Aguevoniados', '3–1', 'Junior Division Final', 'Edgar Mata', 'Pulpos FC', null, null, null)
-on conflict (id) do update set mvp_photo_url = excluded.mvp_photo_url;
+insert into edition_awards (id, event_id, division_name, champion, runner_up, final_score_line, final_notes, mvp_name, mvp_team, mvp_position, mvp_stat_line, mvp_photo_url, mvp_action_photo_url) values
+('award-2026-premier', 'ev-2026', 'Premier Division', 'Negronis FC', 'Palmeras FC', '4–2 (2–1 HT)', 'Grand Final — August 9, 2026', 'Daniele Contarino', 'Negronis FC', 'Forward', '7 goals · 4 assists · 3 Man of the Match awards', '/mvp/daniele-contarino-portrait.jpg', '/gallery/negronis-daniele-strike.jpg'),
+('award-2026-junior', 'ev-2026', 'Junior Division', 'Gatitos Repelaos', 'Opponent to be confirmed', '2–2 (won 5–4 on penalties)', 'Junior Division Final — August 9, 2026', 'Antwan Vasquez', 'Aguevoniados', 'Midfielder', '5 goals · 3 assists · 1 Man of the Match award', '/mvp/antwan-vasquez-portrait.jpg', null),
+('award-2025-premier', 'ev-2025', 'Premier Division', 'Palmeras FC', 'Negronis FC', '3–3 (Palmeras won 5–4 on penalties)', 'Premier Division Final', 'Daniele Contarino', 'Negronis FC', 'Forward', 'Tournament MVP — despite Negronis'' final defeat', '/mvp/daniele-contarino-portrait.jpg', '/gallery/negronis-daniele-strike.jpg'),
+('award-2025-junior', 'ev-2025', 'Junior Division', 'Pulpos FC', 'Aguevoniados', '3–1', 'Junior Division Final', 'Edgar Mata', 'Pulpos FC', null, null, null, null)
+on conflict (id) do update set mvp_photo_url = excluded.mvp_photo_url, mvp_action_photo_url = excluded.mvp_action_photo_url;
 
 insert into partners (id, name, tier, status, logo_url, instagram, description_en, description_es, "order") values
 ('partner-latina-trader', 'Latina Trader VIP', 'title', 'previous', '/partners/latina-trader-vip.jpg', '@latinatradervip',
@@ -69,12 +69,15 @@ on conflict (id) do update set logo_url = excluded.logo_url, description_en = ex
 
 insert into gallery_images (id, event_id, url, alt_en, alt_es, caption, orientation, accent_color) values
 ('g1', 'ev-2026', null, 'Grand Final day, Doral Legacy Park', 'Dia de la Gran Final, Doral Legacy Park', 'Grand Final · Aug 9, 2026', 'landscape', 'gold'),
-('g2', 'ev-2026', null, 'Premier Division match action', 'Accion de un partido de la Division Premier', 'Premier Division', 'portrait', 'navy'),
+('g2', 'ev-2026', '/gallery/negronis-daniele-strike.jpg', 'Daniele Contarino striking the ball for Negronis FC', 'Daniele Contarino disparando el balon con Negronis FC', 'Premier Division', 'portrait', 'navy'),
 ('g3', 'ev-2026', '/gallery/junior-goalkeeper-action.jpg', 'Junior Division goalkeeper in action', 'Portero de la Division Junior en accion', 'Junior Division', 'portrait', 'gold'),
 ('g4', 'ev-2026', '/gallery/junior-trophy-lift.jpg', 'Trophy lift celebration', 'Celebracion con el trofeo', 'Champions', 'portrait', 'navy'),
 ('g5', 'ev-2026', '/gallery/junior-referee-handshake.jpg', 'Referee crew before kickoff', 'Equipo arbitral antes del pitazo inicial', 'Referee crew', 'portrait', 'gold'),
 ('g6', 'ev-2026', null, 'Sideline crowd supporting their team', 'Aficion apoyando a su equipo desde la linea', 'Sideline support', 'portrait', 'navy'),
 ('g7', 'ev-2026', null, 'Kickoff at Doral Legacy Park', 'Saque inicial en Doral Legacy Park', 'Kickoff', 'landscape', 'gold'),
 ('g8', 'ev-2026', null, 'Penalty shootout tension', 'Tension en la tanda de penales', 'Penalties', 'square', 'navy'),
-('g9', 'ev-2026', '/gallery/gatitos-finals-bound.png', 'Gatitos Repelaos matchday graphic announcing their Junior Division final berth', 'Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior', 'Gatitos Repelaos — Finals Bound', 'portrait', 'navy')
+('g9', 'ev-2026', '/gallery/gatitos-finals-bound.png', 'Gatitos Repelaos matchday graphic announcing their Junior Division final berth', 'Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior', 'Gatitos Repelaos — Finals Bound', 'portrait', 'navy'),
+('g10', 'ev-2026', '/gallery/junior-atla-strike.jpg', 'Match action on the run', 'Accion de partido en movimiento', 'Match action', 'portrait', 'gold'),
+('g11', 'ev-2026', '/gallery/premier-header-juggle.jpg', 'Warming up before kickoff', 'Calentando antes del pitazo inicial', 'Pregame warmup', 'portrait', 'navy'),
+('g12', 'ev-2026', '/gallery/junior-pumas-dribble.jpg', 'Dribbling past a defender', 'Regateando a un defensor', 'Match action', 'portrait', 'gold')
 on conflict (id) do update set url = excluded.url, event_id = excluded.event_id;

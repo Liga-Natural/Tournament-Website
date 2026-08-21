@@ -270,7 +270,8 @@ export const editionAwards: EditionAward[] = [
     mvpTeam: "Negronis FC",
     mvpPosition: "Forward",
     mvpStatLine: "7 goals · 4 assists · 3 Man of the Match awards",
-    mvpPhotoUrl: null,
+    mvpPhotoUrl: "/mvp/daniele-contarino-portrait.jpg",
+    mvpActionPhotoUrl: "/gallery/negronis-daniele-strike.jpg",
   },
   {
     id: "award-2026-junior",
@@ -285,6 +286,7 @@ export const editionAwards: EditionAward[] = [
     mvpPosition: "Midfielder",
     mvpStatLine: "5 goals · 3 assists · 1 Man of the Match award",
     mvpPhotoUrl: "/mvp/antwan-vasquez-portrait.jpg",
+    mvpActionPhotoUrl: null,
   },
   {
     id: "award-2025-premier",
@@ -298,7 +300,8 @@ export const editionAwards: EditionAward[] = [
     mvpTeam: "Negronis FC",
     mvpPosition: "Forward",
     mvpStatLine: "Tournament MVP — despite Negronis' final defeat",
-    mvpPhotoUrl: null,
+    mvpPhotoUrl: "/mvp/daniele-contarino-portrait.jpg",
+    mvpActionPhotoUrl: "/gallery/negronis-daniele-strike.jpg",
   },
   {
     id: "award-2025-junior",
@@ -313,6 +316,7 @@ export const editionAwards: EditionAward[] = [
     mvpPosition: null,
     mvpStatLine: null,
     mvpPhotoUrl: null,
+    mvpActionPhotoUrl: null,
   },
 ];
 
@@ -345,7 +349,7 @@ export const partners: PartnerRecord[] = [
 
 export const galleryImages: GalleryImageRecord[] = [
   { id: "g1", eventId: "ev-2026", url: null, altEn: "Grand Final day, Doral Legacy Park", altEs: "Dia de la Gran Final, Doral Legacy Park", caption: "Grand Final · Aug 9, 2026", orientation: "landscape", accentColor: "gold" },
-  { id: "g2", eventId: "ev-2026", url: null, altEn: "Premier Division match action", altEs: "Accion de un partido de la Division Premier", caption: "Premier Division", orientation: "portrait", accentColor: "navy" },
+  { id: "g2", eventId: "ev-2026", url: "/gallery/negronis-daniele-strike.jpg", altEn: "Daniele Contarino striking the ball for Negronis FC", altEs: "Daniele Contarino disparando el balon con Negronis FC", caption: "Premier Division", orientation: "portrait", accentColor: "navy" },
   { id: "g3", eventId: "ev-2026", url: "/gallery/junior-goalkeeper-action.jpg", altEn: "Junior Division goalkeeper in action", altEs: "Portero de la Division Junior en accion", caption: "Junior Division", orientation: "portrait", accentColor: "gold" },
   { id: "g4", eventId: "ev-2026", url: "/gallery/junior-trophy-lift.jpg", altEn: "Trophy lift celebration", altEs: "Celebracion con el trofeo", caption: "Champions", orientation: "portrait", accentColor: "navy" },
   { id: "g5", eventId: "ev-2026", url: "/gallery/junior-referee-handshake.jpg", altEn: "Referee crew before kickoff", altEs: "Equipo arbitral antes del pitazo inicial", caption: "Referee crew", orientation: "portrait", accentColor: "gold" },
@@ -361,5 +365,35 @@ export const galleryImages: GalleryImageRecord[] = [
     caption: "Gatitos Repelaos — Finals Bound",
     orientation: "portrait",
     accentColor: "navy",
+  },
+  {
+    id: "g10",
+    eventId: "ev-2026",
+    url: "/gallery/junior-atla-strike.jpg",
+    altEn: "Match action on the run",
+    altEs: "Accion de partido en movimiento",
+    caption: "Match action",
+    orientation: "portrait",
+    accentColor: "gold",
+  },
+  {
+    id: "g11",
+    eventId: "ev-2026",
+    url: "/gallery/premier-header-juggle.jpg",
+    altEn: "Warming up before kickoff",
+    altEs: "Calentando antes del pitazo inicial",
+    caption: "Pregame warmup",
+    orientation: "portrait",
+    accentColor: "navy",
+  },
+  {
+    id: "g12",
+    eventId: "ev-2026",
+    url: "/gallery/junior-pumas-dribble.jpg",
+    altEn: "Dribbling past a defender",
+    altEs: "Regateando a un defensor",
+    caption: "Match action",
+    orientation: "portrait",
+    accentColor: "gold",
   },
 ];

@@ -95,11 +95,13 @@ create table if not exists edition_awards (
   mvp_team text not null,
   mvp_position text,
   mvp_stat_line text,
-  mvp_photo_url text
+  mvp_photo_url text,
+  mvp_action_photo_url text
 );
 
 alter table teams add column if not exists squad_photo_url text;
 alter table edition_awards add column if not exists mvp_photo_url text;
+alter table edition_awards add column if not exists mvp_action_photo_url text;
 alter table gallery_images add column if not exists event_id text references events(id) on delete set null;
 
 create table if not exists partners (

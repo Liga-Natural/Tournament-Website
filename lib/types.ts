@@ -97,6 +97,8 @@ export interface EditionAward {
   mvpPosition: string | null;
   mvpStatLine: string | null;
   mvpPhotoUrl: string | null;
+  /** Wider action shot (mid-play), preferred over mvpPhotoUrl on the Choose a Moment cards. */
+  mvpActionPhotoUrl: string | null;
 }
 
 export interface PartnerRecord {

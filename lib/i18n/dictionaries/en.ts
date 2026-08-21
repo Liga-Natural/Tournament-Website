@@ -159,6 +159,12 @@ const en = {
     grandFinal: "Grand Final",
     finalResult: "Final Result",
     empty: "Earlier editions will be added here as the organizer's archive grows.",
+    momentKicker: "Choose a Moment",
+    momentHeading: "The Faces of the League",
+    momentBody: "Every MVP, caught mid-play — tap a card to jump to their season.",
+    tabRecordBook: "Record Book",
+    tabGallery: "Gallery",
+    galleryEmpty: "We're adding more match photography here every season — follow @liga.natural for the latest.",
   },
   partnersPage: {
     heading: "Partner With Us",

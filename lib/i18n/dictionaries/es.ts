@@ -161,6 +161,12 @@ const es: Dictionary = {
     grandFinal: "Gran Final",
     finalResult: "Resultado Final",
     empty: "Las ediciones anteriores se agregarán aquí a medida que crezca el archivo del organizador.",
+    momentKicker: "Elige un Momento",
+    momentHeading: "Los Rostros de la Liga",
+    momentBody: "Cada MVP, capturado en plena jugada — toca una tarjeta para ir a su temporada.",
+    tabRecordBook: "Libro de Récords",
+    tabGallery: "Galería",
+    galleryEmpty: "Estamos agregando más fotografía de partidos aquí cada temporada — síguenos en @liga.natural para lo más reciente.",
   },
   partnersPage: {
     heading: "Sé Patrocinador",

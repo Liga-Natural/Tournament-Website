@@ -3,6 +3,7 @@ import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getAllFixturesWithContext } from "@/lib/queries";
 import { PageHeader, Section, EmptyState } from "@/components/page-parts";
 import { FixtureCard } from "@/components/fixture-card";
+import { ScheduleTabs } from "@/components/schedule-tabs";
 
 export default async function SchedulePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: rawLocale } = await params;
@@ -20,35 +21,34 @@ export default async function SchedulePage({ params }: { params: Promise<{ local
   return (
     <>
       <PageHeader kicker="Liga Natural Tournaments" title={dict.schedulePage.heading} subtitle={dict.schedulePage.subheading} />
-      <Section className="pt-0 space-y-14">
-        <div>
-          <h2 className="mb-4 font-display text-2xl font-bold uppercase tracking-wide text-gold-light">
-            {dict.schedulePage.upcomingHeading}
-          </h2>
-          {upcoming.length === 0 ? (
-            <EmptyState message={dict.schedulePage.noUpcoming} />
-          ) : (
-            <div className="grid gap-3 sm:grid-cols-2">
-              {upcoming.map((r) => (
-                <FixtureCard key={r.fixture.id} fixture={r.fixture} homeTeam={r.home} awayTeam={r.away} dict={dict} />
-              ))}
-            </div>
-          )}
-        </div>
-        <div>
-          <h2 className="mb-4 font-display text-2xl font-bold uppercase tracking-wide text-gold-light">
-            {dict.schedulePage.resultsHeading}
-          </h2>
-          {results.length === 0 ? (
-            <EmptyState message={dict.schedulePage.noResults} />
-          ) : (
-            <div className="grid gap-3 sm:grid-cols-2">
-              {results.map((r) => (
-                <FixtureCard key={r.fixture.id} fixture={r.fixture} homeTeam={r.home} awayTeam={r.away} dict={dict} />
-              ))}
-            </div>
-          )}
-        </div>
+      <Section className="pt-0">
+        <ScheduleTabs
+          upcomingLabel={dict.schedulePage.upcomingHeading}
+          resultsLabel={dict.schedulePage.resultsHeading}
+          initialActive={upcoming.length === 0 && results.length > 0 ? "results" : "upcoming"}
+          upcoming={
+            upcoming.length === 0 ? (
+              <EmptyState message={dict.schedulePage.noUpcoming} />
+            ) : (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {upcoming.map((r) => (
+                  <FixtureCard key={r.fixture.id} fixture={r.fixture} homeTeam={r.home} awayTeam={r.away} dict={dict} />
+                ))}
+              </div>
+            )
+          }
+          results={
+            results.length === 0 ? (
+              <EmptyState message={dict.schedulePage.noResults} />
+            ) : (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {results.map((r) => (
+                  <FixtureCard key={r.fixture.id} fixture={r.fixture} homeTeam={r.home} awayTeam={r.away} dict={dict} />
+                ))}
+              </div>
+            )
+          }
+        />
       </Section>
     </>
   );

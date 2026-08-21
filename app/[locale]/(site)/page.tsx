@@ -202,7 +202,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <h2 className="font-display text-3xl font-bold uppercase tracking-wide text-cream sm:text-4xl">
                 {dict.home.photosHeading}
               </h2>
-              <Link href={`${base}/gallery`} className="shrink-0 text-sm font-medium text-gold-light hover:text-gold">
+              <Link href={`${base}/past-editions`} className="shrink-0 text-sm font-medium text-gold-light hover:text-gold">
                 {dict.home.photosCta}
               </Link>
             </div>
@@ -210,7 +210,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               {photos.map((img) => (
                 <Link
                   key={img.id}
-                  href={`${base}/gallery`}
+                  href={`${base}/past-editions`}
                   className="group relative aspect-[3/4] w-48 shrink-0 snap-start overflow-hidden rounded-2xl shadow-lg shadow-black/40 sm:w-56"
                 >
                   <Image
