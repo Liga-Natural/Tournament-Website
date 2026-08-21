@@ -34,7 +34,7 @@
   --color-cp-chrome-dark: var(--cp-chrome-dark);
   --color-cp-gold: var(--cp-gold);
 
-  --font-display: "Big Shoulders Display", "Big Shoulders", sans-serif;
+  --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-cp-display: var(--font-cp-display);
 }
