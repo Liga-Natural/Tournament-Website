@@ -232,16 +232,16 @@ export function SiteNav({
 
       {open && (
         <div className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-deep xl:hidden">
-          <div className="relative flex items-center justify-end px-4 py-3">
+          <div className="relative flex items-center justify-end px-4 py-2">
             <button
               type="button"
-              className="grid h-10 w-10 place-items-center rounded-full border border-gold/40 text-gold-light"
+              className="grid h-9 w-9 place-items-center rounded-full border border-gold/40 text-gold-light"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
             >
               <svg
-                width="18"
-                height="18"
+                width="16"
+                height="16"
                 viewBox="0 0 18 18"
                 fill="none"
                 aria-hidden="true"
@@ -256,8 +256,8 @@ export function SiteNav({
             </button>
           </div>
 
-          <div className="relative flex flex-col items-center pb-6 pt-2">
-            <LeagueBadge size={150} />
+          <div className="relative flex flex-col items-center pb-2 pt-1">
+            <LeagueBadge size={68} />
           </div>
 
           <nav
@@ -269,14 +269,14 @@ export function SiteNav({
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className={`flex items-center justify-between py-4 font-display text-xl font-bold uppercase tracking-wide transition-colors ${
+                className={`flex items-center justify-between py-2 font-display text-base font-bold uppercase tracking-wide transition-colors ${
                   pathname === l.href ? "text-gold-light" : "text-cream hover:text-gold-light"
                 }`}
               >
                 {l.label}
                 <svg
-                  width="10"
-                  height="16"
+                  width="8"
+                  height="13"
                   viewBox="0 0 10 16"
                   fill="none"
                   aria-hidden="true"
@@ -294,17 +294,17 @@ export function SiteNav({
             ))}
           </nav>
 
-          <div className="relative flex items-center justify-between px-5 pt-4">
+          <div className="relative flex items-center justify-between px-5 pt-3">
             <Link
               href={manageHref}
               onClick={() => setOpen(false)}
-              className="text-sm font-semibold text-muted"
+              className="text-xs font-semibold text-muted"
             >
               {dict.nav.manage}
             </Link>
             <LocaleSwitcher locale={locale} />
           </div>
-          <div className="relative px-5 pb-8 pt-4">
+          <div className="relative px-5 pb-5 pt-3">
             <Link
               href={`${base}/partners`}
               onClick={() => setOpen(false)}
