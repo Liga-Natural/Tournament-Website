@@ -269,10 +269,8 @@ export function SiteNav({
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className={`flex items-center justify-between border-b py-4 font-display text-xl font-bold uppercase tracking-wide transition-colors ${
-                  pathname === l.href
-                    ? "border-gold/30 text-gold-light"
-                    : "border-gold/10 text-cream hover:text-gold-light"
+                className={`flex items-center justify-between py-4 font-display text-xl font-bold uppercase tracking-wide transition-colors ${
+                  pathname === l.href ? "text-gold-light" : "text-cream hover:text-gold-light"
                 }`}
               >
                 {l.label}

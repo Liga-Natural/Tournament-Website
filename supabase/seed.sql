@@ -54,8 +54,8 @@ on conflict (id) do nothing;
 
 insert into edition_awards (id, event_id, division_name, champion, runner_up, final_score_line, final_notes, mvp_name, mvp_team, mvp_position, mvp_stat_line, mvp_photo_url, mvp_action_photo_url) values
 ('award-2026-premier', 'ev-2026', 'Premier Division', 'Negronis FC', 'Palmeras FC', '4–2 (2–1 HT)', 'Grand Final — August 9, 2026', 'Daniele Contarino', 'Negronis FC', 'Forward', '7 goals · 4 assists · 3 Man of the Match awards', '/mvp/daniele-contarino-portrait.jpg', '/gallery/negronis-daniele-strike.jpg'),
-('award-2026-junior', 'ev-2026', 'Junior Division', 'Gatitos Repelaos', 'Opponent to be confirmed', '2–2 (won 5–4 on penalties)', 'Junior Division Final — August 9, 2026', 'Antwan Vasquez', 'Aguevoniados', 'Midfielder', '5 goals · 3 assists · 1 Man of the Match award', '/mvp/antwan-vasquez-portrait.jpg', null),
-('award-2025-premier', 'ev-2025', 'Premier Division', 'Palmeras FC', 'Negronis FC', '3–3 (Palmeras won 5–4 on penalties)', 'Premier Division Final', 'Daniele Contarino', 'Negronis FC', 'Forward', 'Tournament MVP — despite Negronis'' final defeat', '/mvp/daniele-contarino-portrait.jpg', '/gallery/negronis-daniele-strike.jpg'),
+('award-2026-junior', 'ev-2026', 'Junior Division', 'Gatitos Repelaos', 'Opponent to be confirmed', '2–2 (won 5–4 on penalties)', 'Junior Division Final — August 9, 2026', 'Antwan Vasquez', 'Aguevoniados', 'Midfielder', '5 goals · 3 assists · 1 Man of the Match award', '/mvp/antwan-vasquez-portrait.jpg', '/gallery/antwan-vasquez-celebration.jpg'),
+('award-2025-premier', 'ev-2025', 'Premier Division', 'Palmeras FC', 'Negronis FC', '3–3 (Palmeras won 5–4 on penalties)', 'Premier Division Final', 'Daniele Contarino', 'Negronis FC', 'Forward', 'Tournament MVP — despite Negronis'' final defeat', '/mvp/daniele-contarino-portrait.jpg', '/gallery/daniele-contarino-2025-champion.jpg'),
 ('award-2025-junior', 'ev-2025', 'Junior Division', 'Pulpos FC', 'Aguevoniados', '3–1', 'Junior Division Final', 'Edgar Mata', 'Pulpos FC', null, null, null, null)
 on conflict (id) do update set mvp_photo_url = excluded.mvp_photo_url, mvp_action_photo_url = excluded.mvp_action_photo_url;
 
@@ -79,5 +79,8 @@ insert into gallery_images (id, event_id, url, alt_en, alt_es, caption, orientat
 ('g9', 'ev-2026', '/gallery/gatitos-finals-bound.png', 'Gatitos Repelaos matchday graphic announcing their Junior Division final berth', 'Grafica de jornada de Gatitos Repelaos anunciando su pase a la final de la Division Junior', 'Gatitos Repelaos — Finals Bound', 'portrait', 'navy'),
 ('g10', 'ev-2026', '/gallery/junior-atla-strike.jpg', 'Match action on the run', 'Accion de partido en movimiento', 'Match action', 'portrait', 'gold'),
 ('g11', 'ev-2026', '/gallery/premier-header-juggle.jpg', 'Warming up before kickoff', 'Calentando antes del pitazo inicial', 'Pregame warmup', 'portrait', 'navy'),
-('g12', 'ev-2026', '/gallery/junior-pumas-dribble.jpg', 'Dribbling past a defender', 'Regateando a un defensor', 'Match action', 'portrait', 'gold')
+('g12', 'ev-2026', '/gallery/junior-pumas-dribble.jpg', 'Dribbling past a defender', 'Regateando a un defensor', 'Match action', 'portrait', 'gold'),
+('g13', 'ev-2026', '/gallery/antwan-vasquez-celebration.jpg', 'Antwan Vasquez celebrating with Aguevoniados', 'Antwan Vasquez celebrando con Aguevoniados', 'Aguevoniados — celebration', 'portrait', 'gold'),
+('g14', 'ev-2026', '/gallery/antwan-vasquez-laugh.jpg', 'Antwan Vasquez sharing a laugh on the pitch', 'Antwan Vasquez riendo en la cancha', 'Aguevoniados — celebration', 'portrait', 'navy'),
+('g15', 'ev-2025', '/gallery/daniele-contarino-2025-champion.jpg', 'Daniele Contarino with his 2025 tournament medal', 'Daniele Contarino con su medalla de la temporada 2025', 'Negronis FC — Season 2025 MVP', 'portrait', 'gold')
 on conflict (id) do update set url = excluded.url, event_id = excluded.event_id;
