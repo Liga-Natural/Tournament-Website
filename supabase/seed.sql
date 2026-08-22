@@ -82,5 +82,10 @@ insert into gallery_images (id, event_id, url, alt_en, alt_es, caption, orientat
 ('g12', 'ev-2026', '/gallery/junior-pumas-dribble.jpg', 'Dribbling past a defender', 'Regateando a un defensor', 'Match action', 'portrait', 'gold'),
 ('g13', 'ev-2026', '/gallery/antwan-vasquez-celebration.jpg', 'Antwan Vasquez celebrating with Aguevoniados', 'Antwan Vasquez celebrando con Aguevoniados', 'Aguevoniados — celebration', 'portrait', 'gold'),
 ('g14', 'ev-2026', '/gallery/antwan-vasquez-laugh.jpg', 'Antwan Vasquez sharing a laugh on the pitch', 'Antwan Vasquez riendo en la cancha', 'Aguevoniados — celebration', 'portrait', 'navy'),
-('g15', 'ev-2025', '/gallery/daniele-contarino-2025-champion.jpg', 'Daniele Contarino with his 2025 tournament medal', 'Daniele Contarino con su medalla de la temporada 2025', 'Negronis FC — Season 2025 MVP', 'portrait', 'gold')
+('g15', 'ev-2025', '/gallery/daniele-contarino-2025-champion.jpg', 'Daniele Contarino with his 2025 tournament medal', 'Daniele Contarino con su medalla de la temporada 2025', 'Negronis FC — Season 2025 MVP', 'portrait', 'gold'),
+('g16', 'ev-2025', '/gallery/2025-kickoff-toss.jpg', 'Referee and team captains before kickoff', 'Arbitro y capitanes de equipo antes del inicio del partido', 'Season 2025', 'square', 'navy'),
+('g17', 'ev-2025', '/gallery/2025-match-strike.jpg', 'Match action on the run', 'Accion de partido en movimiento', 'Season 2025', 'portrait', 'gold'),
+('g18', 'ev-2025', '/gallery/2025-orange-strike.jpg', 'Match action on the run', 'Accion de partido en movimiento', 'Season 2025', 'portrait', 'navy'),
+('g19', 'ev-2025', '/gallery/2025-midfield-battle.jpg', 'Battling for the ball in midfield', 'Disputando el balon en el mediocampo', 'Season 2025', 'portrait', 'gold'),
+('g20', 'ev-2025', '/gallery/2025-postmatch-handshake.jpg', 'Post-match handshake between opponents', 'Saludo entre rivales al final del partido', 'Season 2025', 'portrait', 'navy')
 on conflict (id) do update set url = excluded.url, event_id = excluded.event_id;
