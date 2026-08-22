@@ -87,5 +87,10 @@ insert into gallery_images (id, event_id, url, alt_en, alt_es, caption, orientat
 ('g17', 'ev-2025', '/gallery/2025-match-strike.jpg', 'Match action on the run', 'Accion de partido en movimiento', 'Season 2025', 'portrait', 'gold'),
 ('g18', 'ev-2025', '/gallery/2025-orange-strike.jpg', 'Match action on the run', 'Accion de partido en movimiento', 'Season 2025', 'portrait', 'navy'),
 ('g19', 'ev-2025', '/gallery/2025-midfield-battle.jpg', 'Battling for the ball in midfield', 'Disputando el balon en el mediocampo', 'Season 2025', 'portrait', 'gold'),
-('g20', 'ev-2025', '/gallery/2025-postmatch-handshake.jpg', 'Post-match handshake between opponents', 'Saludo entre rivales al final del partido', 'Season 2025', 'portrait', 'navy')
+('g20', 'ev-2025', '/gallery/2025-postmatch-handshake.jpg', 'Post-match handshake between opponents', 'Saludo entre rivales al final del partido', 'Season 2025', 'portrait', 'navy'),
+('g21', 'ev-2026', '/gallery/2026-premier-champions-huddle.jpg', 'Negronis FC lifting the Premier Division trophy', 'Negronis FC levantando el trofeo de la Division Premier', 'Premier Division — Champions', 'square', 'gold'),
+('g22', 'ev-2026', '/gallery/2026-keeper-diving-save.jpg', 'Goalkeeper diving to make a save', 'Portero se lanza para hacer una atajada', 'Match action', 'portrait', 'navy'),
+('g23', 'ev-2026', '/gallery/2026-volley-strike.jpg', 'Player striking a volley mid-air', 'Jugador rematando de volea en el aire', 'Match action', 'portrait', 'gold'),
+('g24', 'ev-2026', '/gallery/2026-open-field-run.jpg', 'Player running onto the ball in open field', 'Jugador corriendo hacia el balon en campo abierto', 'Match action', 'portrait', 'navy'),
+('g25', 'ev-2026', '/gallery/2026-match-challenge.jpg', 'Players challenging for the ball', 'Jugadores disputando el balon', 'Match action', 'portrait', 'gold')
 on conflict (id) do update set url = excluded.url, event_id = excluded.event_id;
